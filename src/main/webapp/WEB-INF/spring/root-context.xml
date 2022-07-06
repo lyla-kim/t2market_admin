@@ -43,10 +43,10 @@
 	
 	<tx:annotation-driven/>
 	
-	<mybatis-spring:scan base-package="org.zerock.mapper"/>
+	<mybatis-spring:scan base-package="kr.co.T2Market.admin.mapper"/>
 	
-	<context:component-scan base-package="org.zerock.service"></context:component-scan>
-	<context:component-scan base-package="org.zerock.task"></context:component-scan>
+	<context:component-scan base-package="kr.co.T2Market.admin.service"></context:component-scan>
+	
 	
 	<task:annotation-driven/>
 </beans>
