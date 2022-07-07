@@ -6,8 +6,8 @@
 	<title>T2Market_admin</title>
 	<%@ include file="./includes/admin_header.jsp" %>
 </head>
-
+ 
 <body>
-
+dlrjsms tkfkadl gkf wltrdl dkslek. 
 </body>
 </html>
