@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>notice_register</title>
+<title>notice_get</title>
 <%@ include file="../includes/admin_header.jsp"%>
 </head>
 
@@ -31,29 +31,35 @@
 						<!-- block -->
 						<div class="block">
 							<div class="navbar navbar-inner block-header">
-								<div class="muted pull-left">공지사항 등록</div>
+								<div class="muted pull-left">공지사항 상세보기</div>
 							</div>
 							<div class="block-content collapse in">
 								<div class="span12">
 
 									<fieldset>
 										<div class="control-group">
-											<label class="control-label" for="date01">제목</label>
-											<div class="controls">
-												<input type="text" class="input-xlarge" name="title"
-													id="title" style="width: 1050px">
-											</div>
+											<label>제목</label>
+											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.title }"/>' readonly="readonly">
+										</div>
+										<div class="control-group">
+											<label>작성자</label>
+											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.admin_id }"/>' readonly="readonly">
+										</div>
+										<div class="control-group">
+											<label>작성일</label>
+											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.regdate }"/>' readonly="readonly">
 										</div>
 										<div class="control-group">
 											<label class="control-l9 abel" for="textarea2">내용</label>
 											<div class="controls">
 												<textarea name="content" id="content" cols="30" rows="5"
-													style="width: 1050px; height: 300px; font-size: 15px;"></textarea>
+													style="width: 1050px; height: 300px; font-size: 15px;" readonly="readonly">
+												<c:out value="${notice.content }" />	
+												</textarea>
 											</div>
 										</div>
 										<div class="form-actions">
-											<button type="submit" id="savebutton" class="btn btn-primary">저장</button>
-											<button type="reset" class="btn">취소</button>
+											<input type="button" value="수정" class="btn btn-primary" onclick="location.href='/board/noticemodify?no=${notice.notice_no}'">
 											<input type="button" value="목록" class="btn" onclick="location.href='/board/noticelist'">
 										</div>
 									</fieldset>
