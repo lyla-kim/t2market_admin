@@ -1,7 +1,5 @@
 package kr.co.T2Market.login.security;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -12,6 +10,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 
 import lombok.extern.log4j.Log4j;
+
 @Log4j
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
@@ -19,11 +18,10 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 	public void handle(HttpServletRequest request, HttpServletResponse response,
 			AccessDeniedException accessDeniedException) throws IOException, ServletException {
 		// TODO Auto-generated method stub
+		log.error("Access Denied Handler");
+		log.error("Redirect.................");
 		
-		log.error("access denied handler");
-		log.error("redirected....");
 		response.sendRedirect("/accessError");
-
 	}
 
 }

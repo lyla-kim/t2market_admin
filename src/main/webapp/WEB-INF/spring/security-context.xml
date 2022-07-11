@@ -9,24 +9,22 @@
 						
 <bean id="customAccessDenied" class="kr.co.T2Market.login.security.CustomAccessDeniedHandler" />
 
-<!-- <bean id="customLoginSuccess" class="org.zerock.security.CustomLoginSuccessHandler" /> -->
+<bean id="customLoginSuccess" class="kr.co.T2Market.login.security.CustomLoginSuccessHandler" />
 
 <!-- <bean id="customPasswordEncoder" class="org.zerock.security.CustomNoOpPasswordEncoder" /> -->
 <bean id="bcryptPasswordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 
 <bean id="customUserDetailsService" class="kr.co.T2Market.login.security.CustomUserDetailsService"></bean>
 
-<security:http auto-config="true" use-expressions="true">
-
-	<security:intercept-url pattern="/sample/all" access="permitAll" />
+<security:http>
 	
-	<security:intercept-url pattern="/sample/member" access="hasRole('ROLE_MEMBER')" />
-	
-	<security:intercept-url pattern="/sample/admin" access="hasRole('ROLE_ADMIN')" />
+	<security:intercept-url pattern="admin/admin" access="hasRole('20100')" />
+	<security:intercept-url pattern="admin/admin" access="hasRole('20200')" />
+	<security:intercept-url pattern="admin/admin" access="hasRole('20300')" />
 	
 	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
 
-	<security:form-login login-page="/customLogin"/>
+	<security:form-login login-page="/customLogin" authentication-success-handler-ref="customLoginSuccess"/>
 	
 	<security:logout logout-url="/customLogout" invalidate-session="true" delete-cookies="remember-me, JSESSION_ID"/>
 	
