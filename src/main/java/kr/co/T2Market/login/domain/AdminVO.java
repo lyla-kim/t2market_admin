@@ -7,12 +7,12 @@ import lombok.Data;
 
 @Data
 public class AdminVO {
-	private String adminid;
-	private String adminpw;
-	private String adminName;
+	private String admin_id;
+	private String pass;
+	private String name;
 	private Date regdate;
 	private Date updatedate;
-	private boolean active;
+	private char active;
 	
 	private List<AuthVO> authList;
 	
