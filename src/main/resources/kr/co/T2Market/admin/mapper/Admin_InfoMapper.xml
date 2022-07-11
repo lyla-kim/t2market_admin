@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.T2Market.admin.mapper.Admin_InfoMapper">
+
+	<insert id="insertAdmin">
+		insert into admin_info(admin_id, code1, code2, pass, name, active)
+		values(#{admin_id}, #{code1}, #{code2}, #{pass}, #{name}, #{active})
+	</insert>
+	
+	<select id="getId" resultType="int">
+		select count(*) from admin_info where admin_id=#{admin_id}
+	</select>
+	
+	<update id="unusedAdmin">
+		update admin_info
+		set active='N', updatedate=sysdate
+		where admin_id=#{admin_id}
+	</update>
+</mapper>
