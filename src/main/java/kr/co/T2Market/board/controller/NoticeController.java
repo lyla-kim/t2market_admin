@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.T2Market.board.domain.Criteria;
 import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.board.domain.PageDTO;
 import kr.co.T2Market.board.service.NoticeService;
 import kr.co.T2Market.board.service.NoticeServiceImpl;
 import lombok.AllArgsConstructor;
@@ -23,8 +25,13 @@ public class NoticeController {
 	private NoticeService service;
 	
 	@GetMapping("/noticelist")
-	public void list(Model model) {
-		model.addAttribute("list", service.getList());
+	public void list(Criteria cri, Model model) {
+		model.addAttribute("list", service.getList(cri));
+		
+		int total = service.getTotal(cri);
+		
+		log.info("total : " +total);
+		model.addAttribute("pageMaker", new PageDTO(cri, total));
 	}
 	
 	@GetMapping("/noticeregister")

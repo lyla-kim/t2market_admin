@@ -77,24 +77,39 @@
                              </c:forEach>
                            </tbody>
                          </table>
+                       <!-- 기존 페이지 디자인 뺀곳  -->
                        <div class="row">
-                       <div class="span6">
-                       </div>
-                       <div class="span6">
-                       <div class="dataTables_paginate paging_bootstrap pagination">
-                       <ul><li class="prev disabled"><a href="#">← Previous</a></li>
-                       <li class="active"><a href="#">1</a></li>
-                       <li><a href="#">2</a></li>
-                       <li><a href="#">3</a></li>
-                       <li><a href="#">4</a></li>
-                       <li><a href="#">5</a></li>
-                       <li class="next">
-                       <a href="#">Next → </a>
-                       </li>
-                       </ul>
-                       </div>
-                       </div>
-                       </div>
+                       	<div class="span6">
+                       		<div class="dataTables_paginate paging_bootstrap pagination">
+							<ul class="prev disabled">
+								<c:if test="${pageMaker.prev}">
+				              		<li class="paginate_button previous">
+				              			<a href="${pageMaker.startPage -1}">Previous</a>
+				              		</li>
+				            	</c:if>
+				
+					            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
+					              	<li class="active ${pageMaker.cri.pageNum == num ? "active":""}">
+					              		<a href="${num}">${num}</a>
+					              	</li>
+					            </c:forEach>
+				
+					            <c:if test="${pageMaker.next}">
+					              	<li class="next"><a href="${pageMaker.endPage +1 }">Next</a></li>
+					            </c:if>
+					  		</ul>
+					  	</div>
+						</div>
+					 </div>
+
+					 <form id='actionForm' action="/board/list" method='get'>
+						<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
+						<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>	
+
+						<input type='hidden' name='type' value='<c:out value="${ pageMaker.cri.type }"/>'> 
+						<input type='hidden' name='keyword' value='<c:out value="${ pageMaker.cri.keyword }"/>'>	
+					</form>
+					<!-- 페이지 끝 -->
                        </div>
                  </div>
              </div>
