@@ -77,39 +77,29 @@
                              </c:forEach>
                            </tbody>
                          </table>
-                       <!-- 기존 페이지 디자인 뺀곳  -->
-                       <div class="row">
-                       	<div class="span6">
-                       		<div class="dataTables_paginate paging_bootstrap pagination">
-							<ul class="prev disabled">
-								<c:if test="${pageMaker.prev}">
-				              		<li class="paginate_button previous">
-				              			<a href="${pageMaker.startPage -1}">Previous</a>
-				              		</li>
-				            	</c:if>
-				
-					            <c:forEach var="num" begin="${pageMaker.startPage}" end="${pageMaker.endPage}">
-					              	<li class="active ${pageMaker.cri.pageNum == num ? "active":""}">
-					              		<a href="${num}">${num}</a>
-					              	</li>
-					            </c:forEach>
-				
-					            <c:if test="${pageMaker.next}">
-					              	<li class="next"><a href="${pageMaker.endPage +1 }">Next</a></li>
-					            </c:if>
-					  		</ul>
-					  	</div>
-						</div>
-					 </div>
-
-					 <form id='actionForm' action="/board/list" method='get'>
-						<input type='hidden' name='pageNum' value='${pageMaker.cri.pageNum}'>
-						<input type='hidden' name='amount' value='${pageMaker.cri.amount}'>	
-
-						<input type='hidden' name='type' value='<c:out value="${ pageMaker.cri.type }"/>'> 
-						<input type='hidden' name='keyword' value='<c:out value="${ pageMaker.cri.keyword }"/>'>	
-					</form>
-					<!-- 페이지 끝 -->
+                       <!-- 기존 페이징 디자인 뺀곳  -->
+                       <div class="row"><div class="span6"><div class="dataTables_info" id="example_info"></div></div>
+						<div class="span6"><div class="dataTables_paginate paging_bootstrap pagination">
+	
+						<ul>
+						<c:if test="${paging.startPage != 1 }">
+							<li><a href="/board/noticelist?nowPage=${paging.startPage -1 }&cntPerPage=${paging.cntPerPage }">← Previous</a></li>
+						</c:if>
+						<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+							<c:choose>
+								<c:when test="${p == paging.nowPage }">
+									<li class="active">${p }</li>
+								</c:when>
+								<c:when test="${p != paging.nowPage }">
+									<a href="/board/noticelist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${paging.endPage != paging.lastPage}">
+							<li class="next"><a href="/board/noticelist?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">Next → </a></li>
+						</c:if>
+						</ul></div></div></div>
+					<!-- 페이징 끝 -->
                        </div>
                  </div>
              </div>

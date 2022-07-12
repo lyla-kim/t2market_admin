@@ -48,6 +48,11 @@ body { margin: 0; }
         <link  href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link  href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link  href="/resources/assets/styles.css" rel="stylesheet" media="screen">
+        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
         <script src="/resources/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
 
@@ -60,13 +65,17 @@ body { margin: 0; }
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/">T2Market</a>
+                    <a class="brand" href="#">Admin Panel</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                         
-	                        <ul class="nav">
-	                        	<li class="dropdown"><a href="#1" class="dropdown-toggle">로그인</a></li>
-	                        	<li class="dropdown"><a href="/admin/registerAdmin" class="dropdown-toggle">회원가입</a></li>
+	                        <ul class="zeta-menu">
+	                        	<li><a href="#1">Vincent Gabriel</a>
+	                        		<ul>
+	                        			<li><a href="/admin/unusedAdmin?admin_id=ff" id="withdraw">회원탈퇴</a>
+	                        			<li><a href="/admin/main">로그아웃</a>
+	                        		</ul>
+	                        	</li>
 	                        </ul>
                             
                         </ul>

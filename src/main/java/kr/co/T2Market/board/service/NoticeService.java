@@ -2,8 +2,8 @@ package kr.co.T2Market.board.service;
 
 import java.util.List;
 
-import kr.co.T2Market.board.domain.Criteria;
 import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.reciept.domain.PagingVO;
 
 public interface NoticeService {
 
@@ -15,7 +15,7 @@ public interface NoticeService {
 	
 	public boolean modify(NoticeVO notice);
 	
-	public List<NoticeVO> getList(Criteria cri);
+	public int countReciept();
 	
-	public int getTotal(Criteria cri);
+	public List<NoticeVO> selectNotice(PagingVO vo);
 }

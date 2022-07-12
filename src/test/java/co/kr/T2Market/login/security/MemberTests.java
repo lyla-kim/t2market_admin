@@ -66,7 +66,7 @@ public class MemberTests {
 //				
 //					pstmt.setString(1, "admin"+i);
 //					pstmt.setString(2, "123123");
-//					pstmt.setString(3, "愿�由ъ옄"+i);
+//					pstmt.setString(3, "�꽴占썹뵳�딆쁽"+i);
 //				
 //				pstmt.executeUpdate();
 //			}catch(Exception e){

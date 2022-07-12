@@ -8,11 +8,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import kr.co.T2Market.board.domain.Criteria;
 import kr.co.T2Market.board.domain.NoticeVO;
-import kr.co.T2Market.board.domain.PageDTO;
 import kr.co.T2Market.board.service.NoticeService;
 import kr.co.T2Market.board.service.NoticeServiceImpl;
+import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -25,13 +24,25 @@ public class NoticeController {
 	private NoticeService service;
 	
 	@GetMapping("/noticelist")
-	public void list(Criteria cri, Model model) {
-		model.addAttribute("list", service.getList(cri));
+	public void list(PagingVO vo ,Model model, 
+			@RequestParam(value="nowPage", required=false)String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		int total = service.getTotal(cri);
+		log.info("receipt lisst..");
 		
-		log.info("total : " +total);
-		model.addAttribute("pageMaker", new PageDTO(cri, total));
+		int total = service.countReciept();
+		
+		if(nowPage == null || nowPage=="") {
+			nowPage="1";
+		}
+		if(cntPerPage == null || cntPerPage=="") {
+			cntPerPage="10";
+		}
+		
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
+		
+		model.addAttribute("paging", vo);
+		model.addAttribute("list", service.selectNotice(vo));
+		
 	}
 	
 	@GetMapping("/noticeregister")

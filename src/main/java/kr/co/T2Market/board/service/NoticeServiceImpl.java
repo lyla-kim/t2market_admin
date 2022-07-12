@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.T2Market.board.domain.Criteria;
 import kr.co.T2Market.board.domain.NoticeVO;
 import kr.co.T2Market.board.mapper.NoticeMapper;
+import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -19,7 +19,11 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	@Override
 	public List<NoticeVO> getList() {
-		return mapper.getList();
+		
+		List<NoticeVO> list = mapper.getList();
+		log.info("notice list..."+list);
+		
+		return list;
 	}
 
 	@Override
@@ -38,16 +42,14 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 	
 	@Override
-	public List<NoticeVO> getList(Criteria cri) {
-		log.info("get List With criteria"+cri);
+	public int countReciept() {
+		log.info("countReciept....");
+		return mapper.countReciept();
+	};
 		
-		return mapper.getListWithPaging(cri);
-	}
-	
 	@Override
-	public int getTotal(Criteria cri) {
-		log.info("getTotal count");
-		return mapper.getTotalCount(cri);
-	}
-
+	public List<NoticeVO> selectNotice(PagingVO vo){
+		log.info("selectReciept....");
+		return mapper.selectNotice(vo);
+	};
 }
