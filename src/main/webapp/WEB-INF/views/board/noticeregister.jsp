@@ -54,7 +54,7 @@
 										<div class="form-actions">
 											<button type="submit" id="savebutton" class="btn btn-primary">저장</button>
 											<button type="reset" class="btn">취소</button>
-											<button type="submit" class="btn" data-oper='list'>목록</button>
+											<input type="button" value="목록" class="btn" onclick="location.href='/board/noticelist'">
 										</div>
 									</fieldset>
 
