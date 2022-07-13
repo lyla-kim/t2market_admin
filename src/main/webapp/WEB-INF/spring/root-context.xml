@@ -47,11 +47,13 @@
 	<mybatis-spring:scan base-package="kr.co.T2Market.admin.mapper"/>
 	<mybatis-spring:scan base-package="kr.co.T2Market.code.mapper"/>
 	<mybatis-spring:scan base-package="kr.co.T2Market.board.mapper"/>
+	<mybatis-spring:scan base-package="kr.co.T2Market.reciept.mapper"/>
 	
 	<context:component-scan base-package="kr.co.T2Market.login.service"></context:component-scan>
 	<context:component-scan base-package="kr.co.T2Market.admin.service"></context:component-scan>
 	<context:component-scan base-package="kr.co.T2Market.code.service"></context:component-scan>
 	<context:component-scan base-package="kr.co.T2Market.board.service"></context:component-scan>
+	<context:component-scan base-package="kr.co.T2Market.reciept.service"></context:component-scan>
 
 	
 	
