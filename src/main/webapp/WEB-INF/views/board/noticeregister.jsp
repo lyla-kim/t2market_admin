@@ -17,7 +17,7 @@
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
 					<li><a href="noticelist"><i class="icon-chevron-right"></i>
 							공지사항</a></li>
-					<li><a href="calendar.html"><i class="icon-chevron-right"></i>
+					<li><a href="qnalist"><i class="icon-chevron-right"></i>
 							1:1 상담</a></li>
 				</ul>
 			</div>

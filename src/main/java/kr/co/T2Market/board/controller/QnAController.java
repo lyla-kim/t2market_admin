@@ -10,6 +10,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.T2Market.board.domain.NoticeVO;
 import kr.co.T2Market.board.service.NoticeService;
+import kr.co.T2Market.board.service.NoticeServiceImpl;
+import kr.co.T2Market.board.service.QnAService;
+import kr.co.T2Market.board.service.ReplyService;
 import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -18,15 +21,15 @@ import lombok.extern.log4j.Log4j;
 @Log4j
 @RequestMapping("/board")
 @AllArgsConstructor
-public class NoticeController {
+public class QnAController {
 
-	private NoticeService service;
+	private QnAService service;
 	
-	@GetMapping("/noticelist")
+	@GetMapping("/qnalist")
 	public void list(PagingVO vo ,Model model, 
 			@RequestParam(value="nowPage", required=false)String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
-		log.info("receipt lisst..");
+		log.info("QnA list..");
 		
 		int total = service.countReciept();
 		
@@ -40,39 +43,12 @@ public class NoticeController {
 		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
 		model.addAttribute("paging", vo);
-		model.addAttribute("list", service.selectNotice(vo));
+		model.addAttribute("list", service.selectQnA(vo));
 		
 	}
 	
-	@GetMapping("/noticeregister")
-	public void register() {
-		
-	}
-	
-	@PostMapping("/noticeregister")
-	public String register(NoticeVO notice, RedirectAttributes rttr ) {
-		//TODO : 나중에 삭제 -> 로그인 작업 완료되면
-		notice.setAdmin_id("admin1");
-		
-		service.regiser(notice);
-		
-		rttr.addFlashAttribute("result", notice.getNotice_no());
-		
-		return "redirect:/board/noticelist";
-	}
-	
-	@GetMapping({"/noticeget","noticemodify"})
-	public void get(@RequestParam("notice_no") Long notice_no, Model model) {
-		model.addAttribute("notice", service.get(notice_no));
-	}
-	
-	@PostMapping("/noticemodify")
-	public String modify(NoticeVO notice, RedirectAttributes rttr) {
-		
-		if(service.modify(notice)) {
-			rttr.addFlashAttribute("result", "success");
-		}
-		
-		return "redirect:/board/noticelist";
+	@GetMapping("/qnaget")
+	public void get(@RequestParam("qna_no") Long qna_no, Model model) {
+		model.addAttribute("qna", service.get(qna_no));
 	}
 }

@@ -1,11 +1,11 @@
-<!-- 관리자 공지사항 목록 화면 -->
+<!-- 관리자 1:1상담 목록 화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html style="" class=" js flexbox canvas canvastext webgl no-touch geolocation postmessage websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths">
 <head>
-        <title>T2Market_admin_notice</title>
+        <title>T2Market_admin_QnA</title>
         <!-- Bootstrap -->
         <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -36,7 +36,7 @@
          <!-- block -->
          <div class="block">
              <div class="navbar navbar-inner block-header">
-                 <div class="muted pull-left">공지사항</div>
+                 <div class="muted pull-left">1:1 상담</div>
                  
              </div>
              <div class="block-content collapse in">
@@ -44,9 +44,6 @@
                     <div class="table-toolbar">
                        <div class="btn-group pull-right" style="padding: 10px 0px;">
                           <a href="noticeregister">
-                          	<button class="btn btn-success">Add New 
-	                          <i class="icon-plus icon-white"></i><br>
-	                         </button>
                           </a>
                   		</div>
                     </div>
@@ -63,16 +60,16 @@
                          </thead>
                          
                      <tbody role="alert" aria-live="polite" aria-relevant="all">
-                     	<c:forEach items="${list }" var="notice">
+                     	<c:forEach items="${list }" var="qna_user">
                      		<tr class="gradeA odd">
-                                 <td class="  sorting_1"><c:out value="${notice.notice_no }" /></td>
+                                 <td class="  sorting_1"><c:out value="${qna_user.qna_no }" /></td>
                                  <td class="move">
-                                 	<a class="move" href="/board/noticeget?notice_no=<c:out value='${notice.notice_no }' />">
-                                 		<c:out value="${notice.title }" />
+                                 	<a class="move" href="/board/qnaget?qna_no=<c:out value='${qna_user.qna_no }' />">
+                                 		<c:out value="${qna_user.title }" />
                                  	</a>
                                  </td>
-                                 <td class=" "><c:out value="${notice.admin_id }" /></td>
-                                 <td class="center "><fmt:formatDate pattern="yyyy-MM-dd" value="${notice.regdate }" /></td>
+                                 <td class=" "><c:out value="${qna_user.member_id }" /></td>
+                                 <td class="center "><fmt:formatDate pattern="yyyy-MM-dd" value="${qna_user.regdate }" /></td>
                              </tr>
                              </c:forEach>
                            </tbody>
@@ -83,7 +80,7 @@
 	
 						<ul>
 						<c:if test="${paging.startPage != 1 }">
-							<li><a href="/board/noticelist?nowPage=${paging.startPage -1 }&cntPerPage=${paging.cntPerPage }">← Previous</a></li>
+							<li><a href="/board/qnalist?nowPage=${paging.startPage -1 }&cntPerPage=${paging.cntPerPage }">← Previous</a></li>
 						</c:if>
 						<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
 							<c:choose>
@@ -91,12 +88,12 @@
 									<li class="active">${p }</li>
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
-									<a href="/board/noticelist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+									<a href="/board/qnaist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 								</c:when>
 							</c:choose>
 						</c:forEach>
 						<c:if test="${paging.endPage != paging.lastPage}">
-							<li class="next"><a href="/board/noticelist?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">Next → </a></li>
+							<li class="next"><a href="/board/qnalist?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">Next → </a></li>
 						</c:if>
 						</ul></div></div></div>
 					<!-- 페이징 끝 -->
