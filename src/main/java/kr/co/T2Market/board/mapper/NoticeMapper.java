@@ -2,9 +2,8 @@ package kr.co.T2Market.board.mapper;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Select;
-
 import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.reciept.domain.PagingVO;
 
 public interface NoticeMapper {
 
@@ -15,4 +14,8 @@ public interface NoticeMapper {
 	public NoticeVO read(Long noticeNo);
 
 	public int update(NoticeVO notice);
+	
+	public int countReciept();
+	
+	public List<NoticeVO> selectNotice(PagingVO vo);
 }

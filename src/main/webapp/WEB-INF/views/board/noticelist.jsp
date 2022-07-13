@@ -77,24 +77,29 @@
                              </c:forEach>
                            </tbody>
                          </table>
-                       <div class="row">
-                       <div class="span6">
-                       </div>
-                       <div class="span6">
-                       <div class="dataTables_paginate paging_bootstrap pagination">
-                       <ul><li class="prev disabled"><a href="#">← Previous</a></li>
-                       <li class="active"><a href="#">1</a></li>
-                       <li><a href="#">2</a></li>
-                       <li><a href="#">3</a></li>
-                       <li><a href="#">4</a></li>
-                       <li><a href="#">5</a></li>
-                       <li class="next">
-                       <a href="#">Next → </a>
-                       </li>
-                       </ul>
-                       </div>
-                       </div>
-                       </div>
+                       <!-- 기존 페이징 디자인 뺀곳  -->
+                       <div class="row"><div class="span6"><div class="dataTables_info" id="example_info"></div></div>
+						<div class="span6"><div class="dataTables_paginate paging_bootstrap pagination">
+	
+						<ul>
+						<c:if test="${paging.startPage != 1 }">
+							<li><a href="/board/noticelist?nowPage=${paging.startPage -1 }&cntPerPage=${paging.cntPerPage }">← Previous</a></li>
+						</c:if>
+						<c:forEach begin="${paging.startPage }" end="${paging.endPage }" var="p">
+							<c:choose>
+								<c:when test="${p == paging.nowPage }">
+									<li class="active">${p }</li>
+								</c:when>
+								<c:when test="${p != paging.nowPage }">
+									<a href="/board/noticelist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+								</c:when>
+							</c:choose>
+						</c:forEach>
+						<c:if test="${paging.endPage != paging.lastPage}">
+							<li class="next"><a href="/board/noticelist?nowPage=${paging.endPage+1 }&cntPerPage=${paging.cntPerPage}">Next → </a></li>
+						</c:if>
+						</ul></div></div></div>
+					<!-- 페이징 끝 -->
                        </div>
                  </div>
              </div>
