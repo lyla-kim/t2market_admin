@@ -16,11 +16,16 @@
 
 <bean id="customUserDetailsService" class="kr.co.T2Market.login.security.CustomUserDetailsService"></bean>
 
-<security:http>
+<security:http use-expressions="true">
 	
+	<!-- 메인페이지 권한 -->
 	<security:intercept-url pattern="admin/admin" access="hasRole('20100')" />
 	<security:intercept-url pattern="admin/admin" access="hasRole('20200')" />
 	<security:intercept-url pattern="admin/admin" access="hasRole('20300')" />
+	
+	<!-- 관리자페이지 회원가입 권한 -->
+	<security:intercept-url pattern="admin/registerAdmin" access="hasRole('20200')" />
+	
 	
 	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
 
@@ -33,10 +38,11 @@
 </security:http>
 
 <security:authentication-manager>
-	<security:authentication-provider user-service-ref="customUserDetailsService">
-		<!-- <security:jdbc-user-service data-source-ref="dataSource" 
-			users-by-username-query="select userid, userpw, enabled from tbl_member where userid=?"
-			authorities-by-username-query="select userid, auth from tbl_member_auth where userid=?" />-->
+	
+	 <security:authentication-provider user-service-ref="customUserDetailsService">
+	<!--	<security:jdbc-user-service data-source-ref="dataSource" 
+			users-by-username-query="select admin_id, pass, name, regdate, updatedate, active, code2 from admin_info where admin_id=?"
+			authorities-by-username-query="select admin_id, pass, code2 from admin_info where admin_id=?" /> -->
 		
 		<!-- <security:password-encoder ref="customPasswordEncoder"/> -->
 		
