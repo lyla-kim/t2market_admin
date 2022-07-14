@@ -17,7 +17,7 @@
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
 					<li><a href="noticelist"><i class="icon-chevron-right"></i>
 							공지사항</a></li>
-					<li><a href="calendar.html"><i class="icon-chevron-right"></i>
+					<li><a href="qnalist"><i class="icon-chevron-right"></i>
 							1:1 상담</a></li>
 				</ul>
 			</div>
@@ -54,7 +54,7 @@
 										<div class="form-actions">
 											<button type="submit" id="savebutton" class="btn btn-primary">저장</button>
 											<button type="reset" class="btn">취소</button>
-											<button type="submit" class="btn" data-oper='list'>목록</button>
+											<input type="button" value="목록" class="btn" onclick="location.href='/board/noticelist'">
 										</div>
 									</fieldset>
 

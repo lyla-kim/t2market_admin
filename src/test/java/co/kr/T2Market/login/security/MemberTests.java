@@ -31,7 +31,7 @@ public class MemberTests {
 	public void testInsertMember() {
 		String sql ="insert into admin_info(admin_id, pass, name, code1, code2) values (?, ?, ?, 20000, 20100)";
 		
-		for(int i=10; i<20;i++) {
+		for(int i=1; i<10;i++) {
 			Connection con = null;
 			PreparedStatement pstmt = null;
 			try {
@@ -66,7 +66,7 @@ public class MemberTests {
 //				
 //					pstmt.setString(1, "admin"+i);
 //					pstmt.setString(2, "123123");
-//					pstmt.setString(3, "관리자"+i);
+//					pstmt.setString(3, "�꽴占썹뵳�딆쁽"+i);
 //				
 //				pstmt.executeUpdate();
 //			}catch(Exception e){

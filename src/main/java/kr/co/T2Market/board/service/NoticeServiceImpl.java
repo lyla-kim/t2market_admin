@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.T2Market.board.domain.NoticeVO;
 import kr.co.T2Market.board.mapper.NoticeMapper;
+import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -18,26 +19,37 @@ public class NoticeServiceImpl implements NoticeService {
 	
 	@Override
 	public List<NoticeVO> getList() {
-		// TODO Auto-generated method stub
-		return mapper.getList();
+		
+		List<NoticeVO> list = mapper.getList();
+		log.info("notice list..."+list);
+		
+		return list;
 	}
 
 	@Override
 	public void regiser(NoticeVO notice) {
-		// TODO Auto-generated method stub
 		mapper.insert(notice);
 	}
 
 	@Override
 	public NoticeVO get(Long notice_no) {
-		// TODO Auto-generated method stub
 		return mapper.read(notice_no);
 	}
 
 	@Override
 	public boolean modify(NoticeVO notice) {
-		// TODO Auto-generated method stub
 		return mapper.update(notice) == 1;
 	}
-
+	
+	@Override
+	public int countReciept() {
+		log.info("countReciept....");
+		return mapper.countReciept();
+	};
+		
+	@Override
+	public List<NoticeVO> selectNotice(PagingVO vo){
+		log.info("selectReciept....");
+		return mapper.selectNotice(vo);
+	};
 }
