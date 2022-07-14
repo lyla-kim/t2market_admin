@@ -28,7 +28,7 @@
                         <ul class="nav pull-right">
                         
 	                        <ul class="nav">
-	                        	<li class="dropdown"><a href="#1" class="dropdown-toggle">로그인</a></li>
+	                        	<li class="dropdown"><a href="#1" class="dropdown-toggle"><sec:authentication property="principal.admin.admin_id"/></a></li>
 	                        	<li class="dropdown"><a href="/admin/registerAdmin" class="dropdown-toggle">회원가입</a></li>
 	                        </ul>
                             

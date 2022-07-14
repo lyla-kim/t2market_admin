@@ -1,10 +1,13 @@
 package kr.co.T2Market.login.controller;
 
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import kr.co.T2Market.login.security.CustomUserDetailsService;
 import lombok.extern.log4j.Log4j;
 @Log4j
 @Controller
@@ -34,4 +37,5 @@ public class CommonController {
 	public void logoutGet() {
 		log.info("custom logout");
 	}
+	
 }

@@ -19,7 +19,7 @@
 	
 	<resultMap type="kr.co.T2Market.login.domain.AuthVO" id="authMap">
 		<result property="admin_id" column="admin_id" />
-		<result property="code2" column="code2"/>
+		<result property="auth" column="code2"/>
 	</resultMap>
 	
 	<select id="read" resultMap="adminMap">

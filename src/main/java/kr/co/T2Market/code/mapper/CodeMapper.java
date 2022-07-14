@@ -9,7 +9,7 @@ public interface CodeMapper {
 	
 	public void insert(CodeVO code);
 	
-	public void update(CodeVO code);
+	public int update(CodeVO code);
 	
 	public CodeVO read(String code2);
 

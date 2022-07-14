@@ -7,8 +7,35 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 
 <select id="getList" resultType="kr.co.T2Market.code.domain.CodeVO">
 	<![CDATA[
-		SELECT * FROM code_info
+		SELECT * FROM code_info ORDER BY CODE1
 	]]>
 </select>
+
+<select id="read" resultType="kr.co.T2Market.code.domain.CodeVO">
+	<![CDATA[
+		SELECT * FROM CODE_INFO WHERE CODE2 = #{code2}
+	]]>
+</select>
+
+<insert id="insert">
+	<![CDATA[
+		INSERT INTO CODE_INFO (code1, code1_name, code2, code2_name, code3, code3_name, bigo, regdate, updatedate, active) 
+		VALUES (#{code1}, #{code1_name}, #{code2}, #{code2_name}, #{code3}, #{code3_name}, #{bigo}, sysdate, sysdate, #{active})
+	]]>
+</insert>
+
+<update id="update">
+	<![CDATA[
+		UPDATE CODE_INFO SET 
+		code2 = #{code2},
+		code2_name = #{code2_name},
+		code3 = #{code3},
+		code3_name = #{code3_name},
+		bigo = #{bigo},
+		updatedate = sysdate,
+		active = #{active} 
+		where code2 = #{code2}
+	]]>
+</update>
 
 </mapper>	

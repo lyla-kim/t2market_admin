@@ -9,21 +9,23 @@ import org.springframework.security.core.userdetails.User;
 
 import kr.co.T2Market.login.domain.AdminVO;
 import lombok.Getter;
-
+import lombok.extern.log4j.Log4j;
+@Log4j
 @Getter
-public class CustomAdmin extends User {
+public class CustomUser extends User {
 
 private static final long serialVersionUID = 1L;
 	
 	private AdminVO admin;
 	
-	public CustomAdmin(String username, String password, Collection<? extends GrantedAuthority> authorities ) {
+	public CustomUser(String username, String password, Collection<? extends GrantedAuthority> authorities ) {
 		super(username, password, authorities);
+		log.info("권한: "+authorities);
 	}
 	
-	public CustomAdmin(AdminVO vo) {
+	public CustomUser(AdminVO vo) {
 		super(vo.getAdmin_id(), vo.getPass(), vo.getAuthList().stream()
-				.map(auth -> new SimpleGrantedAuthority(auth.getCode2())).collect(Collectors.toList()));
+				.map(auth -> new SimpleGrantedAuthority(auth.getAuth())).collect(Collectors.toList()));
 		
 		this.admin = vo;
 	}
