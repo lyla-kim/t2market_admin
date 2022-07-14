@@ -24,7 +24,6 @@
 	<security:intercept-url pattern="admin/admin" access="hasRole('20300')" />
 	
 	<!-- 관리자페이지 회원가입 권한 -->
-	<security:intercept-url pattern="admin/registerAdmin" access="hasRole('20200')" />
 	
 	
 	<security:remember-me data-source-ref="dataSource" token-validity-seconds="604800"/>
