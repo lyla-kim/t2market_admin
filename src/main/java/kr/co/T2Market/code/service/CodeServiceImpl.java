@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import kr.co.T2Market.code.domain.CodeVO;
+import kr.co.T2Market.code.domain.PagingVO;
 import kr.co.T2Market.code.mapper.CodeMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -44,6 +45,19 @@ public class CodeServiceImpl implements CodeService {
 		log.info("register..."+code);
 		mapper.insert(code);
 
+	}
+	
+	@Override
+	public int countCode() {
+		
+		log.info("countCode...."+mapper.countCode());
+		return mapper.countCode();
+	}
+	
+	@Override
+	public List<CodeVO> getListWithPaging(PagingVO vo) {
+		log.info("getListWithPaging...."+vo);
+		return mapper.selectCode(vo);
 	}
 
 }

@@ -95,7 +95,7 @@ body { margin: 0; }
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">매출관리 </a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">코드관리 </a>
+                                <a href="code/codelist" role="button" class="dropdown-toggle" data-toggle="dropdown">코드관리 </a>
                             </li>
                         </ul>
                     </div>
