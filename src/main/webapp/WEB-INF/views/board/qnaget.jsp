@@ -63,13 +63,59 @@
 										</div>
 									</fieldset>
 									
-
 								</div>
 							</div>
 						</div>
 					</form>
 					<!-- /block -->
 				</div>
+				
+				<!-- 댓글 시작 -->
+				<div class="block">
+                  <div class="navbar navbar-inner block-header">
+                      <div class="muted pull-left">댓글</div>
+                  </div>
+                  <div class="block-content collapse in">
+                      <div class="span12">
+                           <form class="form-horizontal">
+                            <fieldset>
+                            
+                            <c:forEach items="${reply }" var="reply">
+                            <li>
+                            	<div>
+                            		<p>${reply.admin_id } / ${reply.updatedate }</p>
+                            		<p>${reply.content } </p>
+                            	</div>
+                            </li>
+                            </c:forEach>
+                            
+                              <hr>
+                              <div class="control-group">
+                                <label class="control-label">작성자</label>
+                                <div class="controls">
+                                  <span class="input-xlarge uneditable-input">Some value here</span>
+                                </div>
+                              </div>
+                              <div class="control-group">
+                                <label class="control-label" for="focusedInput">내용</label>
+                                <div class="controls">
+                                  <textarea name="content" id="content" cols="30" rows="5"
+									style="width: 300px; height: 200px; font-size: 15px;"></textarea>
+                                </div>
+                              </div>
+                              
+                              <div class="form-actions">
+                                <button type="submit" class="btn btn-primary">댓글등록</button>
+                                <button type="reset" class="btn">취소</button>
+                              </div>
+                            </fieldset>
+                          </form>
+
+                      </div>
+                  </div>
+              </div>
+									
+				<!-- 댓글 끝 -->
 			</div>
 		</div>
 	</div>

@@ -4,9 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.domain.ReplyVO;
 import kr.co.T2Market.board.mapper.ReplyMapper;
-import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -18,38 +18,33 @@ public class ReplyServiceImpl implements ReplyService {
 	private ReplyMapper mapper;
 	
 	@Override
-	public void regiser(ReplyVO reply) {
-		mapper.insert(reply);
-
+	public int register(ReplyVO vo) {
+		return mapper.insert(vo);
 	}
 
 	@Override
-	public ReplyVO get(Long reply_no) {
-		return mapper.read(reply_no);
+	public ReplyVO get(Long answer_no) {
+		return mapper.read(answer_no);
 	}
 
 	@Override
-	public boolean modify(ReplyVO reply) {
-		return mapper.update(reply) == 1;
+	public int modify(ReplyVO vo) {
+		return mapper.update(vo);
 	}
 
 	@Override
-	public boolean remove(Long reply_no) {
-		log.info("remove...."+reply_no);
-		
-		return mapper.delete(reply_no);
+	public int remove(Long answer_no) {
+		return mapper.delete(answer_no);
 	}
 
 	@Override
-	public int countReciept() {
-		log.info("countReciept....");
-		return mapper.countReciept();
+	public int countReply() {
+		return mapper.countReply();
 	}
 
 	@Override
-	public List<ReplyVO> selectReply(PagingVO vo) {
-		log.info("selectReciept....");
-		return mapper.selectReply(vo);
+	public List<ReplyVO> getList(PagingVO pag, Long qna_no) {
+		return mapper.getListWithPaging(pag, qna_no);
 	}
 
 }

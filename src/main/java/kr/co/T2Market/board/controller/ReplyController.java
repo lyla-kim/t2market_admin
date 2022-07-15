@@ -1,80 +1,88 @@
 package kr.co.T2Market.board.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.domain.ReplyVO;
-import kr.co.T2Market.board.service.NoticeService;
 import kr.co.T2Market.board.service.ReplyService;
-import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
-@Controller
+@RequestMapping("/replies/")
+@RestController
 @Log4j
-@RequestMapping("/replies")
 @AllArgsConstructor
 public class ReplyController {
-
+	
 	private ReplyService service;
 	
-	@GetMapping("/replylist")
-	public void list(PagingVO vo ,Model model, 
-			@RequestParam(value="nowPage", required=false)String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
+	@PreAuthorize("isAuthenticated()")
+	@PostMapping(value="/new", consumes="application/json", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> create(@RequestBody ReplyVO vo){
+		log.info("ReplyVO:"+vo);
 		
-		log.info("reply list..");
+		int insertCount = service.register(vo);
 		
-		int total = service.countReciept();
+		log.info("Reply Insert Count:"+insertCount);
 		
-		if(nowPage == null || nowPage=="") {
-			nowPage="1";
-		}
-		if(cntPerPage == null || cntPerPage=="") {
-			cntPerPage="10";
-		}
-		
-		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
-		
-		model.addAttribute("paging", vo);
-		model.addAttribute("list", service.selectReply(vo));
-		
+		return insertCount == 1 ? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping("/replyregister")
-	public void register() {
+	@GetMapping(value="/pages/{qna_no}/{nowPage}", produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<PagingVO> getList(@PathVariable("nowPage") Long nowPage, @PathVariable("qna_no") Long qna_no){
+		PagingVO pag = new PagingVO(page, 10);
 		
+		log.info(pag);		
+		
+		return new ResponseEntity<>(service.getList(page, qna_no), HttpStatus.OK); //?
 	}
 	
-	@PostMapping("/replyregister")
-	public String register(ReplyVO reply, RedirectAttributes rttr ) {
-		//TODO : 나중에 삭제 -> 로그인 작업 완료되면
-		reply.setAdmin_id("admin1");
+	@GetMapping(value="/{answer_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<ReplyVO> get(@PathVariable("answer_no") Long answer_no){
+		log.info("get:"+answer_no);
 		
-		service.regiser(reply);
-		
-		rttr.addFlashAttribute("result", reply.getAnswer_no());
-		
-		return "redirect:/replies/replylist";
+		return new ResponseEntity<>(service.get(answer_no), HttpStatus.OK);
 	}
 	
-	@GetMapping({"/replyget","replymodify"})
-	public void get(@RequestParam("answer_no") Long answer_no, Model model) {
-		model.addAttribute("answer", service.get(answer_no));
+	@PreAuthorize("principal.username == #vo.replyer") //?
+	@DeleteMapping(value="/{answer_no}", produces= {MediaType.TEXT_PLAIN_VALUE})
+	public ResponseEntity<String> remove(@PathVariable("answer_no") Long answer_no){
+		log.info("remove:"+answer_no);
+		
+		return service.remove(answer_no) ==1
+				? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@PostMapping("/noticemodify")
-	public String modify(ReplyVO reply, RedirectAttributes rttr) {
-		
-		if(service.modify(reply)) {
-			rttr.addFlashAttribute("result", "success");
-		}
-		
-		return "redirect:/replies/replylist";
+	@PreAuthorize("principal.username == #vo.replyer")  //?
+	@RequestMapping(method = { RequestMethod.PUT,
+			RequestMethod.PATCH }, value = "/{answer_no}", consumes = "application/json", produces = {
+					MediaType.TEXT_PLAIN_VALUE })
+	public ResponseEntity<String> modify(
+			 @RequestBody ReplyVO vo, 
+			 @PathVariable("answer_no") Long answer_no) {
+
+		vo.setAnswer_no(answer_no);
+
+		log.info("answer_no: " + answer_no);
+		log.info("modify: " + vo);
+
+		return service.modify(vo) == 1 
+				? new ResponseEntity<>("success", HttpStatus.OK)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
 	}
+	
+
 }

@@ -2,23 +2,25 @@ package kr.co.T2Market.board.mapper;
 
 import java.util.List;
 
-import kr.co.T2Market.board.domain.NoticeVO;
+import org.apache.ibatis.annotations.Param;
+
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.domain.ReplyVO;
-import kr.co.T2Market.reciept.domain.PagingVO;
 
 public interface ReplyMapper {
-
-	public List<ReplyVO> getList();
 	
-	public void insert(ReplyVO reply);
+	public int insert(ReplyVO vo);
+	
+	public ReplyVO read(Long qna_no);
+	
+	public int delete (Long answer_no);
 	
 	public int update(ReplyVO reply);
 	
-	public boolean delete(Long reply_no);
+	public int countReply();
 	
-	public int countReciept();
-	
-	public List<ReplyVO> selectReply(PagingVO vo);
+	public List<ReplyVO> getListWithPaging(
+			@Param("pag") PagingVO pag,
+			@Param("qna_no") Long qna_no);
 
-	public ReplyVO read(Long reply_no);
 }

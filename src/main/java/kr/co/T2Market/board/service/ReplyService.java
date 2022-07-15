@@ -2,21 +2,20 @@ package kr.co.T2Market.board.service;
 
 import java.util.List;
 
-import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.domain.ReplyVO;
-import kr.co.T2Market.reciept.domain.PagingVO;
 
 public interface ReplyService {
 
-	public void regiser(ReplyVO reply);
+	public int register(ReplyVO vo);
 	
-	public ReplyVO get(Long reply_no);
+	public ReplyVO get(Long answer_no);
 	
-	public boolean modify(ReplyVO reply);
+	public int modify(ReplyVO vo);
 	
-	public boolean remove(Long reply_no);
+	public int remove(Long answer_no);
 	
-	public int countReciept();
+	public int countReply();
 	
-	public List<ReplyVO> selectReply(PagingVO vo);
+	public List<ReplyVO> getList(PagingVO pag, Long qna_no);
 }

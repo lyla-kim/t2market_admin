@@ -9,9 +9,11 @@ import lombok.ToString;
 @ToString
 public class ReplyVO {
 
+	private Long qna_no;
 	private Long answer_no;
 	private String admin_id;
 	private String content;
 	private Date regdate;
 	private Date updatedate;
+	
 }

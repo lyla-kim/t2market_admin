@@ -3,15 +3,18 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="kr.co.T2Market.board.mapper.ReplyMapper">
-
-	<!-- <select id="getList" resultType="kr.co.T2Market.board.domain.ReplyVO">
+	
+	<select id="read" resultType="kr.co.T2Market.board.domain.ReplyVO">
 		<![CDATA[
 			SELECT * FROM qna_admin 
+			where qna_no = #{qna_no}
 		]]>
-	</select> -->
+	</select>
 	
-	<select id="countReciept" resultType="int">
-		select count(*) from qna_admin
+	<select id="countReply" resultType="int">
+		select count(*) 
+		from qna_admin
+		where qna_no = #{qna_no}
 	</select>
 	
 	<select id="selectReply" resultType="kr.co.T2Market.board.domain.ReplyVO">
@@ -21,21 +24,23 @@
 				FROM (
 						SELECT *  
 						from qna_admin
-						order by answer_no desc
+						where qna_no = #{qna_no}
 						) A
 				)
 		WHERE RN BETWEEN #{start} AND #{end}
 	</select>
 	
-	<insert id="insert"> <!-- qna_no 값이 어떻게 넘어가지? -->
+	<select id="getListWithPaging" resultType="kr.co.T2Market.board.domain.ReplyVO">
+		select * from qna_admin
+		where qna_no = #{qna_no}
+		order by answer_no asc
+	</select>
+	
+	<insert id="insert"> 
 		insert into qna_admin (answer_no, admin_id, qna_no, content, regdate, updatedate)
 			values(seq_admin_answer_no.nextval, #{admin_id}, #{qna_no}, #{content}, sysdate, sysdate)
 	</insert>
 	
-	<select id="read" resultType="kr.co.T2Market.board.domain.ReplyVO">
-		select * from qna_admin where answer_no = #{answer_no}
-	</select>
-
 	<update id="update">
 		update qna_admin
 		set content = #{content},
@@ -44,7 +49,8 @@
 	</update>
 	
 	<delete id="delete">
-		delete from qna_admin where answer_no = #{answer_no}
+		delete from qna_admin 
+		where answer_no = #{answer_no}
 		
 	</delete>
 	
