@@ -7,11 +7,10 @@ import lombok.ToString;
 
 @Data
 @ToString
-public class QnAVO {
+public class ReplyVO {
 
-	private Long qna_no;
-	private String member_id;
-	private String title;
+	private Long answer_no;
+	private String admin_id;
 	private String content;
 	private Date regdate;
 	private Date updatedate;

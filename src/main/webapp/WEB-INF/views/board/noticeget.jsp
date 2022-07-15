@@ -1,4 +1,4 @@
-<!-- 관리자 공지사항 등록 화면 -->
+<!-- 관리자 공지사항 게시물 상세 화면 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -6,7 +6,7 @@
 
 <html>
 <head>
-<title>notice_get</title>
+<title>QnA_get</title>
 <%@ include file="../includes/admin_header.jsp"%>
 </head>
 
@@ -17,7 +17,7 @@
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
 					<li><a href="noticelist"><i class="icon-chevron-right"></i>
 							공지사항</a></li>
-					<li><a href="calendar.html"><i class="icon-chevron-right"></i>
+					<li><a href="qnalist"><i class="icon-chevron-right"></i>
 							1:1 상담</a></li>
 				</ul>
 			</div>
@@ -26,8 +26,7 @@
 				<!-- morris stacked chart -->
 
 				<div class="row-fluid">
-					<form role="form" name="frm" method="post"
-						action="/board/noticeregister">
+					<form role="form" name="frm" method="post" >
 						<!-- block -->
 						<div class="block">
 							<div class="navbar navbar-inner block-header">
@@ -78,21 +77,3 @@
 	<!--/.fluid-container-->
 </body>
 </html>
-<script type="text/javascript">
-	$(document).ready(function(e){
-		$("#savebutton").on("click", function(e){
-			
-			if(!$("#title").val()){
-				alert("제목을 입력하세요.");
-				$("#title").focus();
-				return false;
-			}
-			if(!$("#content").val()){
-				alert("내용을 입력하세요.");
-				$("#content").focus();
-				return false;
-			}
-			
-		})
-	})
-</script>

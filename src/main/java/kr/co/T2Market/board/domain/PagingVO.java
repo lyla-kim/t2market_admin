@@ -5,7 +5,6 @@ import lombok.Data;
 @Data
 public class PagingVO {
 
-	//?˜„?¬?˜?´ì§?, ?‹œ?‘?˜?´ì§?, ??˜?´ì§?, ê²Œì‹œê¸? ì´? ê°??ˆ˜, ?˜?´ì§??‹¹ ê¸? ê°??ˆ˜, ë§ˆì?ë§‰í˜?´ì§?, SQLì¿¼ë¦¬?— ?“¸ start, end
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage=5;
 	
@@ -20,12 +19,10 @@ public class PagingVO {
 		calStartEnd(getNowPage(), getCntPerPage());
 	}
 	
-	//? œ?¼ ë§ˆì?ë§‰í˜?´ì§? ê³„ì‚°
 	public void calLastPage(int total, int cntPerPage) {
 		setLastPage((int)Math.ceil((double)total / (double)cntPerPage));
 	}
 	
-	//?‹œ?‘, ? ?˜?´ì§? ê³„ì‚°
 	public void calStartEndPage(int nowPage, int cntPage) {
 		setEndPage((int)Math.ceil((double)nowPage / (double)cntPage)*cntPage);
 		if(getLastPage()<getEndPage()) {
@@ -37,7 +34,6 @@ public class PagingVO {
 		}
 	}
 	
-	// DB ì¿¼ë¦¬?—?„œ ?‚¬?š©?•  start, endê°? ê³„ì‚°
 	public void calStartEnd(int nowPage, int cntPerPage) {
 		setEnd(nowPage*cntPerPage);
 		setStart(getEnd()-cntPerPage+1);
