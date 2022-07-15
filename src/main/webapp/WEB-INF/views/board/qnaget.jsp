@@ -80,6 +80,7 @@
                            <form class="form-horizontal">
                             <fieldset>
                             
+                            <!-- 댓글 출력되는 자리 -->
                             <c:forEach items="${reply }" var="reply">
                             <li>
                             	<div>
@@ -88,12 +89,13 @@
                             	</div>
                             </li>
                             </c:forEach>
+                            <!-- 댓글 출력되는 자리 -->
                             
                               <hr>
                               <div class="control-group">
                                 <label class="control-label">작성자</label>
                                 <div class="controls">
-                                  <span class="input-xlarge uneditable-input">Some value here</span>
+                                  <span class="input-xlarge uneditable-input">작성자id</span>
                                 </div>
                               </div>
                               <div class="control-group">

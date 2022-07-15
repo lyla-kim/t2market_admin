@@ -40,14 +40,14 @@ public class ReplyController {
 				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 	}
 	
-	@GetMapping(value="/pages/{qna_no}/{nowPage}", produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<PagingVO> getList(@PathVariable("nowPage") Long nowPage, @PathVariable("qna_no") Long qna_no){
-		PagingVO pag = new PagingVO(page, 10);
-		
-		log.info(pag);		
-		
-		return new ResponseEntity<>(service.getList(page, qna_no), HttpStatus.OK); //?
-	}
+//	@GetMapping(value="/pages/{qna_no}/{nowPage}", produces= {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+//	public ResponseEntity<PagingVO> getList(@PathVariable("nowPage") Long nowPage, @PathVariable("qna_no") Long qna_no){
+//		PagingVO pag = new PagingVO(page, 10);
+//		
+//		log.info(pag);		
+//		
+//		return new ResponseEntity<>(service.getList(page, qna_no), HttpStatus.OK); //?
+//	}
 	
 	@GetMapping(value="/{answer_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 	public ResponseEntity<ReplyVO> get(@PathVariable("answer_no") Long answer_no){
