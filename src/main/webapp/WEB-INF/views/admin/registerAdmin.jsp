@@ -82,8 +82,7 @@
 </div>
 </div>
 </div>
-</body>
-</html>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
@@ -124,7 +123,7 @@ $(document).ready(function(){
 			$.ajax({
 				url : "/admin/idCheck",
 				type : "post",
-				dataType : "json",
+				//dataType : "json",
 				data : {"id" : $("#admin_id").val()},
 				success : function(data){
 					if(data >0){
@@ -155,3 +154,5 @@ $(document).ready(function(){
 });
 	
 </script>
+</body>
+</html>
