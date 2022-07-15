@@ -29,9 +29,9 @@ public class RecieptAdminServiceImpl implements RecieptAdminService {
 
 	@Override
 	// 게시물 총 갯수
-	public int countReciept() {
+	public int countReciept(PagingVO vo) {
 		log.info("countReciept....");
-		return mapper.countReciept();
+		return mapper.countReciept(vo);
 	};
 		
 	@Override
@@ -40,4 +40,9 @@ public class RecieptAdminServiceImpl implements RecieptAdminService {
 		log.info("selectReciept....");
 		return mapper.selectReciept(vo);
 	};
+	
+	@Override
+	public RecieptAdminVO recieptRead(String detail_no) {
+		return mapper.recieptRead(detail_no);
+	}
 }

@@ -10,8 +10,12 @@ public interface RecieptAdminMapper {
 	public List<RecieptAdminVO> recieptList();
 	
 	// 게시물 총 갯수
-	public int countReciept();
+	public int countReciept(PagingVO vo);
 	
 	// 페이징 처리 게시글 조회
 	public List<RecieptAdminVO> selectReciept(PagingVO vo);
+	
+	public RecieptAdminVO recieptRead(String detail_no);
+	
+	public void recieptUpdate(RecieptAdminVO vo);
 }

@@ -16,19 +16,44 @@
 	<select id="countReciept" resultType="int">
 		select count(*) from reciept_detail rd, member m, reciept r
 		where rd.reciept_no = r.reciept_no and rd.member_id = m.member_id
+		<include refid="PagingVO"></include>
 	</select>
 	
 	<select id="selectReciept" resultType="kr.co.T2Market.reciept.domain.RecieptAdminVO">
+		<![CDATA[
 		SELECT * 
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
-						SELECT rd.reciept_no, rd.member_id, m.name, r.indate, rd.recieve_date, rd.delivery  
+						SELECT rd.detail_no, rd.reciept_no, rd.member_id, m.member_name, r.indate, rd.recieve_date, rd.delivery  
 						from reciept_detail rd, member m, reciept r
-						where rd.reciept_no = r.reciept_no and rd.member_id = m.member_id
+						where rd.reciept_no = r.reciept_no and rd.member_id = m.member_id ]]>
+						<include refid="PagingVO"></include>
+						<![CDATA[
 						order by rd.recieve_date desc
 						) A
 				)
-		WHERE RN BETWEEN #{start} AND #{end}
+		WHERE RN BETWEEN #{start} AND #{end} ]]>
 	</select>
+	
+	<sql id="PagingVO">
+		<if test="searchType != null">
+			<if test="searchType == 'r'.toString()">and rd.reciept_no like '%'||#{keyword}||'%'</if>
+			<if test="searchType == 'm'.toString()">and rd.member_id like '%'||#{keyword}||'%'</if>
+			<if test="searchType == 'd'.toString()">and rd.delivery like '%'||#{keyword}||'%'</if>
+		</if>
+	</sql>
+	
+	<select id="recieptRead" resultType="kr.co.T2Market.reciept.domain.RecieptAdminVO">
+		select rd.detail_no, rd.member_id, r.buyer_name, r.reciever_name, r.reciever_address, ci.product_no, p.product_name, r.indate, ci.sales, ci.total_price, rd.delivery 
+        from reciept_detail rd, reciept r, cart_info ci, product p
+        where rd.reciept_no = r.reciept_no and rd.member_id = r.member_id and p.product_no = ci.product_no and r.member_id = ci.member_id and r.cart_no = ci.cart_no
+        and rd.detail_no = #{detail_no}
+	</select>
+	
+	<update id="recieptUpdate">
+		update reciept_detail
+		set recieve_date = sysdate, delivery = #{delivery}, updatedate=sysdate
+		where detail_no = #{detail_no}
+	</update>
 </mapper>
