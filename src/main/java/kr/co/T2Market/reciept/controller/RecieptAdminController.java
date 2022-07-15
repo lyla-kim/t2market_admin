@@ -23,13 +23,12 @@ public class RecieptAdminController {
 	private RecieptAdminService service;
 	
 	@GetMapping("/list")
-	public void recieptList(PagingVO vo, Model model, 
-			@RequestParam(value="nowPage", required=false)String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage,
-			@RequestParam(value="searchType", required=false)String searchType, @RequestParam(value="keyword", required=false)String keyword) {
+	public void recieptList(PagingVO vo ,Model model, 
+			@RequestParam(value="nowPage", required=false)String nowPage, @RequestParam(value="cntPerPage", required=false)String cntPerPage) {
 		
 		log.info("receipt lisst..");
 		
-		int total = service.countReciept(vo);
+		int total = service.countReciept();
 		
 		if(nowPage == null || nowPage=="") {
 			nowPage="1";
@@ -37,25 +36,17 @@ public class RecieptAdminController {
 		if(cntPerPage == null || cntPerPage=="") {
 			cntPerPage="10";
 		}
-		if(searchType == null || searchType=="") {
-			searchType="r";
-		}
-		if(keyword == null || keyword=="") {
-			keyword="";
-		}
 		
-		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage), searchType, keyword);
+		vo = new PagingVO(total, Integer.parseInt(nowPage), Integer.parseInt(cntPerPage));
 		
 		model.addAttribute("paging", vo);
 		model.addAttribute("list", service.selectReciept(vo));
 		
 	}
 	
-	@GetMapping("/read")
-	public void recieptRead(@RequestParam("detail_no")String detail_no, Model model) {
-		log.info("reciepte read..........");
+	@GetMapping("/get")
+	public void get() {
 		
-		model.addAttribute("read", service.recieptRead(detail_no));
 	}
 	
 }

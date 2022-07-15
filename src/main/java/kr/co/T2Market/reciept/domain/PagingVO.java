@@ -1,7 +1,5 @@
 package kr.co.T2Market.reciept.domain;
 
-import org.springframework.web.util.UriComponentsBuilder;
-
 import lombok.Data;
 
 @Data
@@ -11,13 +9,7 @@ public class PagingVO {
 	private int nowPage, startPage, endPage, total, cntPerPage, lastPage, start, end;
 	private int cntPage=5;
 	
-	private String searchType;
-	private String keyword;
-	
-	public PagingVO() {
-		this.nowPage = 1;
-		this.cntPerPage =10;
-	}	
+	public PagingVO() {}	
 	
 	public PagingVO(int total, int nowPage, int cntPerPage) {
 		setNowPage(nowPage);
@@ -26,17 +18,6 @@ public class PagingVO {
 		calLastPage(getTotal(), getCntPerPage());
 		calStartEndPage(getNowPage(), cntPage);
 		calStartEnd(getNowPage(), getCntPerPage());
-	}
-	
-	public PagingVO(int total, int nowPage, int cntPerPage, String searchType, String keyword) {
-		setNowPage(nowPage);
-		setCntPerPage(cntPerPage);
-		setTotal(total);
-		calLastPage(getTotal(), getCntPerPage());
-		calStartEndPage(getNowPage(), cntPage);
-		calStartEnd(getNowPage(), getCntPerPage());
-		setSearchType(searchType);
-		setKeyword(keyword);
 	}
 	
 	//제일 마지막페이지 계산
@@ -62,14 +43,4 @@ public class PagingVO {
 		setStart(getEnd()-cntPerPage+1);
 	}
 	
-	public String[] getTypeArr() {
-		return searchType == null? new String[] {} : searchType.split("");
-	}
-	
-	public String getListLink() {
-		UriComponentsBuilder builder = UriComponentsBuilder.fromPath("").queryParam("nowPage", this.nowPage)
-				.queryParam("cntPerPage", this.getCntPerPage()).queryParam("searchType", this.getSearchType()).queryParam("keyword", this.getKeyword());
-		
-		return builder.toUriString();
-	}
 }
