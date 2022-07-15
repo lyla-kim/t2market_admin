@@ -45,4 +45,9 @@ public class RecieptAdminServiceImpl implements RecieptAdminService {
 	public RecieptAdminVO recieptRead(String detail_no) {
 		return mapper.recieptRead(detail_no);
 	}
+	
+	@Override
+	public void recieptUpdate(RecieptAdminVO vo) {
+		mapper.recieptUpdate(vo);
+	}
 }

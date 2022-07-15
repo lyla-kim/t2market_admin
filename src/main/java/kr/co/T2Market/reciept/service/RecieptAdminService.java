@@ -16,4 +16,6 @@ public interface RecieptAdminService {
 	public List<RecieptAdminVO> selectReciept(PagingVO vo);
 	
 	public RecieptAdminVO recieptRead(String detail_no);
+	
+	public void recieptUpdate(RecieptAdminVO vo);
 }

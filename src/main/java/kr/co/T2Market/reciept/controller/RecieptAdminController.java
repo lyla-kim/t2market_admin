@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.T2Market.reciept.domain.PagingVO;
 import kr.co.T2Market.reciept.domain.RecieptAdminVO;
@@ -52,10 +55,26 @@ public class RecieptAdminController {
 	}
 	
 	@GetMapping("/read")
-	public void recieptRead(@RequestParam("detail_no")String detail_no, Model model) {
+	public void recieptRead(@RequestParam("detail_no")String detail_no, PagingVO vo, Model model) {
 		log.info("reciepte read..........");
 		
+		model.addAttribute("paging", vo);
 		model.addAttribute("read", service.recieptRead(detail_no));
 	}
 	
+	@PostMapping("/update")
+	public String recieptUpdate(RecieptAdminVO vo, @ModelAttribute("paging") PagingVO paging, RedirectAttributes rttr) {
+		log.info("reciept update........");
+		
+		service.recieptUpdate(vo);
+		
+		rttr.addFlashAttribute("result", "success");
+		
+		rttr.addAttribute("nowPage", paging.getNowPage());
+		rttr.addAttribute("cntPerPage", paging.getCntPerPage());
+		rttr.addAttribute("searchType", paging.getSearchType());
+		rttr.addAttribute("keyword", paging.getKeyword());
+		
+		return "redirect:/order/list";
+	}
 }

@@ -86,7 +86,9 @@
 			<tr id="recilist">
 				<td><c:out value="${reci.detail_no }"/></td>
 				<td><c:out value="${reci.reciept_no }"/></td>
-				<td><a href='/order/read?detail_no=<c:out value="${reci.detail_no }"/>'><c:out value="${reci.member_id }"/></a></td>
+				<td><a href='/order/read?detail_no=<c:out value="${reci.detail_no }"/>&nowPage=<c:out value="${paging.nowPage }"/>
+				&cntPerPage=<c:out value="${paging.cntPerPage }"/>&searchType=<c:out value="${paging.searchType }"/>
+				&keyword=<c:out value="${paging.keyword }"/>'><c:out value="${reci.member_id }"/></a></td>
 				<td><c:out value="${reci.member_name }"/></td>
 				<td><c:out value="${reci.indate }"/></td>
 				<td><c:if test="${reci.delivery eq 'N' }">-</c:if><c:if test="${reci.delivery eq 'Y' }"><c:out value="${reci.recieve_date }"/></c:if></td>
