@@ -15,5 +15,5 @@ public class CodeVO {
 	private String bigo;
 	private Date regdate;
 	private Date updatedate;
-	private String active;
+	private char active;
 }
