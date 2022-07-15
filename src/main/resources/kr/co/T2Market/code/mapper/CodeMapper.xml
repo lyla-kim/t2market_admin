@@ -38,4 +38,20 @@ PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
 	]]>
 </update>
 
+<select id="countCode" resultType="int">
+	select count(*) from code_info
+</select>
+
+<select id="selectCode" resultType="kr.co.T2Market.code.domain.CodeVO">
+	SELECT * FROM (
+    SELECT ROWNUM RN, A.* 
+	FROM (
+            SELECT *  
+			from code_info
+    		order by code1 asc
+        	) A
+				)
+    WHERE RN BETWEEN #{start} AND #{end}
+</select>
+
 </mapper>	
