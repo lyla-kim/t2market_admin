@@ -7,11 +7,6 @@
 <head>
         <title>T2Market_admin_QnA</title>
         <!-- Bootstrap -->
-        <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/assets/styles.css" rel="stylesheet" media="screen">
-        <link href="/resources/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
-        <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <%@ include file="../includes/admin_header.jsp" %>
 </head>
     
@@ -88,7 +83,7 @@
 									<li class="active">${p }</li>
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
-									<a href="/board/qnaist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+									<a href="/board/qnalist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 								</c:when>
 							</c:choose>
 						</c:forEach>
@@ -108,13 +103,13 @@
 </div>
         <!--/.fluid-container-->
 
-        <script src="vendors/jquery-1.9.1.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
+        <script src="/resources/vendors/jquery-1.9.1.js"></script>
+        <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/resources/vendors/datatables/js/jquery.dataTables.min.js"></script>
 
 
-        <script src="assets/scripts.js"></script>
-        <script src="assets/DT_bootstrap.js"></script>
+        <script src="/resources/assets/scripts.js"></script>
+        <script src="/resources/assets/DT_bootstrap.js"></script>
         <script>
         $(function() {
             

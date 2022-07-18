@@ -9,7 +9,7 @@ public interface ReplyService {
 
 	public int register(ReplyVO vo);
 	
-	public ReplyVO get(Long answer_no);
+	public List<ReplyVO> get(Long answer_no);
 	
 	public int modify(ReplyVO vo);
 	

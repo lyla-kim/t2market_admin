@@ -23,7 +23,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public ReplyVO get(Long answer_no) {
+	public List<ReplyVO> get(Long answer_no) {
 		return mapper.read(answer_no);
 	}
 

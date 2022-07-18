@@ -11,7 +11,7 @@ public interface ReplyMapper {
 	
 	public int insert(ReplyVO vo);
 	
-	public ReplyVO read(Long qna_no);
+	public List<ReplyVO> read(Long qna_no);
 	
 	public int delete (Long answer_no);
 	

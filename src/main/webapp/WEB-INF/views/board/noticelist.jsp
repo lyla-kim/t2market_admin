@@ -56,15 +56,17 @@
                      	<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered dataTable" id="example2" aria-describedby="example2_info">
                          <thead>
                              <tr role="row">
-                             <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 162px;">번호</th>
-                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 237px;">제목</th>
-                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 220px;">작성자</th>
-                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 139px;">작성일</th>
+                             <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;">사용유무</th>
+                             <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 100px;">번호</th>
+                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 300px;">제목</th>
+                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 150px;">작성자</th>
+                             <th class="sorting" role="columnheader" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" style="width: 139px;">작성일</th>
                          </thead>
                          
                      <tbody role="alert" aria-live="polite" aria-relevant="all">
                      	<c:forEach items="${list }" var="notice">
                      		<tr class="gradeA odd">
+                                 <td class="  sorting_1"><c:out value="${notice.active }" /></td>
                                  <td class="  sorting_1"><c:out value="${notice.notice_no }" /></td>
                                  <td class="move">
                                  	<a class="move" href="/board/noticeget?notice_no=<c:out value='${notice.notice_no }' />">

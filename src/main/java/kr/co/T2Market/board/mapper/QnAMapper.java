@@ -2,9 +2,8 @@ package kr.co.T2Market.board.mapper;
 
 import java.util.List;
 
-import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.domain.QnAVO;
-import kr.co.T2Market.reciept.domain.PagingVO;
 
 public interface QnAMapper {
 

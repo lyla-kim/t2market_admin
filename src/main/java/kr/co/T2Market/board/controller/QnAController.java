@@ -1,17 +1,14 @@
 package kr.co.T2Market.board.controller;
 
-import java.util.List;
-
-import javax.inject.Inject;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.service.QnAService;
-import kr.co.T2Market.reciept.domain.PagingVO;
+import kr.co.T2Market.board.service.ReplyService;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -22,6 +19,7 @@ import lombok.extern.log4j.Log4j;
 public class QnAController {
 
 	private QnAService service;
+	private ReplyService replyService;
 	
 	@GetMapping("/qnalist")
 	public void list(PagingVO vo ,Model model, 
@@ -48,6 +46,8 @@ public class QnAController {
 	@GetMapping("/qnaget")
 	public void get(@RequestParam("qna_no") Long qna_no, Model model) {
 		model.addAttribute("qna", service.get(qna_no));
+		//´ñ±Û¸ñ·Ï
+		model.addAttribute("reply", replyService.get(qna_no));
 		
 	}
 	

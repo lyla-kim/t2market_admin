@@ -4,10 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.domain.QnAVO;
 import kr.co.T2Market.board.mapper.QnAMapper;
-import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 

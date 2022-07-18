@@ -46,7 +46,7 @@
 										</div>
 										<div class="control-group">
 											<label>작성일</label>
-											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.regdate }"/>' readonly="readonly">
+											<input name="title" id="title" style="width: 400px" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${notice.regdate }"/>' readonly="readonly">
 										</div>
 										<div class="control-group">
 											<label class="control-l9 abel" for="textarea2">내용</label>
@@ -58,7 +58,7 @@
 											</div>
 										</div>
 										<div class="form-actions">
-											<input type="button" value="수정" class="btn btn-primary" onclick="location.href='/board/noticemodify?no=${notice.notice_no}'">
+											<input type="button" value="수정" class="btn btn-primary" onclick="location.href='/board/noticemodify?notice_no=${notice.notice_no}'">
 											<input type="button" value="목록" class="btn" onclick="location.href='/board/noticelist'">
 										</div>
 									</fieldset>

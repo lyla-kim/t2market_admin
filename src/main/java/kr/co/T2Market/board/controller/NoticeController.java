@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.T2Market.board.domain.NoticeVO;
+import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.service.NoticeService;
-import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
