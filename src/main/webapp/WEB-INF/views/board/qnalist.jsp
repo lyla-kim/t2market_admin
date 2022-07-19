@@ -7,10 +7,7 @@
 <head>
         <title>T2Market_admin_QnA</title>
         <!-- Bootstrap -->
-<<<<<<< HEAD
         <link href="/resources/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
-=======
->>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
         <%@ include file="../includes/admin_header.jsp" %>
 </head>
     
@@ -63,7 +60,7 @@
                      		<tr class="gradeA odd">
                                  <td class="  sorting_1"><c:out value="${qna_user.qna_no }" /></td>
                                  <td class="move">
-                                 	<a class="move" href="/board/qnaget?qna_no=<c:out value='${qna_user.qna_no }' />">
+                                 	<a class="move" href="/board/qnaget?qna_no=<c:out value='${qna_user.qna_no }' />&nowPage=${paging.nowPage}&cntPerPage=${paging.cntPerPage }">
                                  		<c:out value="${qna_user.title }" />
                                  		<c:if test="${qna_user.reply_count ne 0}">
                                  			(<c:out value="${qna_user.reply_count}"></c:out>)
@@ -110,11 +107,7 @@
     </div>
 </div>
         <!--/.fluid-container-->
-<<<<<<< HEAD
 <!-- 
-=======
-
->>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
         <script src="/resources/vendors/jquery-1.9.1.js"></script>
         <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
         <script src="/resources/vendors/datatables/js/jquery.dataTables.min.js"></script>
@@ -122,10 +115,7 @@
 
         <script src="/resources/assets/scripts.js"></script>
         <script src="/resources/assets/DT_bootstrap.js"></script>
-<<<<<<< HEAD
          -->
-=======
->>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
         <script>
         $(function() {
             

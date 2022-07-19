@@ -56,7 +56,7 @@ public class QnAController {
 	
 	
 	@GetMapping("/qnaget")
-	public void get(@RequestParam("qna_no") String qna_no, Model model, @ModelAttribute("paging") PagingVO paging) {
+	public void get(@RequestParam("qna_no") String qna_no, Model model, PagingVO paging) {
 		service.updateReplyCount(qna_no);
 		
 		model.addAttribute("qna", service.get(qna_no));

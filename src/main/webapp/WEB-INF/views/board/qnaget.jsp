@@ -92,6 +92,8 @@
                             			<textarea id="hideT${reply.answer_no}" cols="30" rows="5" name="content1"
 													style="width: 300px; height: 200px; font-size: 15px;"></textarea>
                             		</div>
+                            		<input type="hidden" name="nowPage" value='<c:out value="${paging.nowPage }"/>'>
+                   			  		<input type="hidden" name="cntPerPage" value='<c:out value="${paging.cntPerPage }"/>'>
                             		<div>
                             		<button class="btn" type="button" id="replyModifyBtn${reply.answer_no}" data-answer_no="${reply.answer_no}">수정</button>
                             		<button class="btn" type="button" id="replyDeleteBtn${reply.answer_no}" data-answer_no="${reply.answer_no}">삭제</button>
@@ -148,12 +150,12 @@
 	$(document).ready(function(){
 		//삭제버튼 클릭 시
 		$("button[id^='replyDeleteBtn']").on("click", function(){
-			location.href = "/board/replyRemove?qna_no=${qna.qna_no}&answer_no="+$(this).attr("data-answer_no");
+			location.href = "/board/replyRemove?qna_no=${qna.qna_no}&answer_no="+$(this).attr("data-answer_no")+"&nowPage=${paging.nowPage}&cntPerPage=${paging.cntPerPage }";
 		});
 		
 		//수정버튼 클릭 시
 		$("button[id^='replyModifyBtn']").on("click", function(){
-			location.href = "/board/replyModify?qna_no=${qna.qna_no}&answer_no="+$(this).attr("data-answer_no");
+			location.href = "/board/replyModify?qna_no=${qna.qna_no}&answer_no="+$(this).attr("data-answer_no")+"&nowPage=${paging.nowPage}&cntPerPage=${paging.cntPerPage }";
 		//	$("p[id^='surf']").hide();
 		//	$("div[id^='hideC']").show();
 		//	$("button[id^='replyModifyBtn']").hide();
