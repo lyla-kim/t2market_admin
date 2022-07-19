@@ -3,7 +3,7 @@ package kr.co.T2Market.board.service;
 import java.util.List;
 
 import kr.co.T2Market.board.domain.NoticeVO;
-import kr.co.T2Market.reciept.domain.PagingVO;
+import kr.co.T2Market.board.domain.PagingVO;
 
 public interface NoticeService {
 

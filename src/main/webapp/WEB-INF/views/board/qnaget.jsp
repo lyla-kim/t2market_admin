@@ -82,7 +82,6 @@
                       <div class="span12">
                            <form id="replyForm" class="form-horizontal" action="/board/replyWrite" method="post">
                             <fieldset>
-                            
                             <!-- 댓글 출력되는 자리 -->
                             <c:forEach items="${reply }" var="reply">
                             <li>

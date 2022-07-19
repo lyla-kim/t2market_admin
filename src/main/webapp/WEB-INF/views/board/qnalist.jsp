@@ -7,7 +7,10 @@
 <head>
         <title>T2Market_admin_QnA</title>
         <!-- Bootstrap -->
+<<<<<<< HEAD
         <link href="/resources/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
+=======
+>>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
         <%@ include file="../includes/admin_header.jsp" %>
 </head>
     
@@ -88,7 +91,7 @@
 									<li class="active">${p }</li>
 								</c:when>
 								<c:when test="${p != paging.nowPage }">
-									<a href="/board/qnaist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
+									<a href="/board/qnalist?nowPage=${p }&cntPerPage=${paging.cntPerPage}">${p }</a>
 								</c:when>
 							</c:choose>
 						</c:forEach>
@@ -107,7 +110,11 @@
     </div>
 </div>
         <!--/.fluid-container-->
+<<<<<<< HEAD
 <!-- 
+=======
+
+>>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
         <script src="/resources/vendors/jquery-1.9.1.js"></script>
         <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
         <script src="/resources/vendors/datatables/js/jquery.dataTables.min.js"></script>
@@ -115,7 +122,10 @@
 
         <script src="/resources/assets/scripts.js"></script>
         <script src="/resources/assets/DT_bootstrap.js"></script>
+<<<<<<< HEAD
          -->
+=======
+>>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
         <script>
         $(function() {
             

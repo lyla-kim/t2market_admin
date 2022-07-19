@@ -27,7 +27,7 @@
 
 				<div class="row-fluid">
 					<form role="form" name="frm" method="post"
-						action="/board/noticeregister">
+						action="/board/noticemodify">
 						<!-- block -->
 						<div class="block">
 							<div class="navbar navbar-inner block-header">
@@ -38,28 +38,40 @@
 
 									<fieldset>
 										<div class="control-group">
+											<label>사용유무</label>
+											<select name = "active">
+												<option value = "Y" <c:if test="${notice.active eq 'Y' }">selected</c:if>>Y</option>
+												<option value = "N" <c:if test="${notice.active eq 'N' }"></c:if>>N</option>
+											</select>
+										</div>
+										<div class="control-group">
 											<label>제목</label>
-											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.title }"/>' readonly="readonly">
+											<input type="hidden" name='notice_no' value='<c:out value="${notice.notice_no}"/>'/>
+											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.title }"/>'>
 										</div>
 										<div class="control-group">
 											<label>작성자</label>
-											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.admin_id }"/>' readonly="readonly">
+											<input name="admin_id" id="admin_id" style="width: 400px" value='<c:out value="${notice.admin_id }"/>' readonly="readonly">
 										</div>
 										<div class="control-group">
 											<label>작성일</label>
-											<input name="title" id="title" style="width: 400px" value='<c:out value="${notice.regdate }"/>' readonly="readonly">
+											<input name="regdatev" id="regdatev" style="width: 400px" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${notice.regdate }"/>' readonly="readonly">
+										</div>
+										<div class="control-group">
+											<label>수정일</label>
+											<input name="updatedatev" id="updatedatev" style="width: 400px" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${notice.updatedate }"/>' readonly="readonly">
 										</div>
 										<div class="control-group">
 											<label class="control-l9 abel" for="textarea2">내용</label>
 											<div class="controls">
 												<textarea name="content" id="content" cols="30" rows="5"
-													style="width: 1050px; height: 300px; font-size: 15px;" readonly="readonly">
+													style="width: 1050px; height: 300px; font-size: 15px;" >
 												<c:out value="${notice.content }" />	
 												</textarea>
 											</div>
 										</div>
 										<div class="form-actions">
-											<input type="button" value="수정" class="btn btn-primary" onclick="location.href='/board/noticemodify'">
+											<button type="submit" id="savebutton" class="btn btn-primary">수정</button>
 											<input type="button" value="목록" class="btn" onclick="location.href='/board/noticelist'">
 										</div>
 									</fieldset>

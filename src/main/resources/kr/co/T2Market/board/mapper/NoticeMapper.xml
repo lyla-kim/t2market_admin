@@ -23,7 +23,6 @@
 				FROM (
 						SELECT *  
 						from notice
-						where active = 'Y'
 						order by notice_no desc
 						) A
 				)

@@ -1,5 +1,7 @@
 package kr.co.T2Market.board.controller;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.domain.ReplyVO;
 import kr.co.T2Market.board.service.ReplyService;
 import lombok.AllArgsConstructor;
@@ -49,12 +50,21 @@ public class ReplyController {
 //		return new ResponseEntity<>(service.getList(page, qna_no), HttpStatus.OK); //?
 //	}
 	
+<<<<<<< HEAD
 //	@GetMapping(value="/{answer_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
 //	public ResponseEntity<ReplyVO> get(@PathVariable("answer_no") String answer_no){
 //		log.info("get:"+answer_no);
 //		
 //		return new ResponseEntity<>(service.get(answer_no), HttpStatus.OK);
 //	}
+=======
+	@GetMapping(value="/{answer_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+	public ResponseEntity<List<ReplyVO>> get(@PathVariable("answer_no") Long answer_no){
+		log.info("get:"+answer_no);
+		
+		return new ResponseEntity<>(service.get(answer_no), HttpStatus.OK);
+	}
+>>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
 	
 //	@PreAuthorize("principal.username == #vo.replyer") //?
 //	@DeleteMapping(value="/{answer_no}", produces= {MediaType.TEXT_PLAIN_VALUE})

@@ -9,7 +9,11 @@ public interface ReplyService {
 
 	public int register(ReplyVO vo);
 	
+<<<<<<< HEAD
 	public List<ReplyVO> get(String answer_no);
+=======
+	public List<ReplyVO> get(Long answer_no);
+>>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
 	
 	public int modify(ReplyVO vo);
 	
