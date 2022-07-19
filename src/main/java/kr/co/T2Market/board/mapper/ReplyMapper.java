@@ -11,11 +11,7 @@ public interface ReplyMapper {
 	
 	public int insert(ReplyVO vo);
 	
-<<<<<<< HEAD
 	public List<ReplyVO> read(String qna_no);
-=======
-	public List<ReplyVO> read(Long qna_no);
->>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
 	
 	public int delete(ReplyVO vo);
 	

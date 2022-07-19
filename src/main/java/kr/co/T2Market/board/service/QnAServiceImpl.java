@@ -5,18 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
 import kr.co.T2Market.board.domain.PagingVO;
->>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
 import kr.co.T2Market.board.domain.QnAVO;
 import kr.co.T2Market.board.mapper.QnAMapper;
-<<<<<<< HEAD
-import kr.co.T2Market.reciept.domain.PagingVO;
 import lombok.Setter;
-=======
-import lombok.AllArgsConstructor;
->>>>>>> branch 'master' of https://github.com/lyla-kim/t2market_admin.git
 import lombok.extern.log4j.Log4j;
 
 @Service
