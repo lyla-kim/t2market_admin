@@ -5,16 +5,7 @@
 <html>
 <head>
         <title>주문관리 상세조회&수정</title>
-        <!-- Bootstrap -->
-        <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/assets/styles.css" rel="stylesheet" media="screen">
-        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <script src="/resources/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<%@ include file="../includes/admin_header.jsp"%>       
     </head>
 <body>
 <div class="span9">

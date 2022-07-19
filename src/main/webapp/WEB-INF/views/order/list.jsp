@@ -6,14 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>주문관리 리스트</title>
+<%@ include file="../includes/admin_header.jsp"%>
         <!-- Bootstrap -->
-        <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/assets/styles.css" rel="stylesheet" media="screen">
         <link href="/resources/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
         <link href="/resources/vendors/jGrowl/jquery.jgrowl.css" rel="stylesheet" media="screen">
         
-        <script src="/resources/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 
 <body>

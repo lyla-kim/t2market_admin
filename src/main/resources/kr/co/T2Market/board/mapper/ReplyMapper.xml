@@ -8,26 +8,20 @@
 		<![CDATA[
 			SELECT * FROM qna_admin 
 			where qna_no = #{qna_no}
+			order by updatedate desc
 		]]>
 	</select>
 	
 	<select id="countReply" resultType="int">
-		select count(*) 
+		select count(*) repl
 		from qna_admin
 		where qna_no = #{qna_no}
 	</select>
 	
+	<!-- 선택한 댓글 조회 -->
 	<select id="selectReply" resultType="kr.co.T2Market.board.domain.ReplyVO">
-		SELECT * 
-		FROM (
-			SELECT ROWNUM RN, A.* 
-				FROM (
-						SELECT *  
-						from qna_admin
-						where qna_no = #{qna_no}
-						) A
-				)
-		WHERE RN BETWEEN #{start} AND #{end}
+		select * from qna_admin
+		where answer_no = #{answer_no}
 	</select>
 	
 	<select id="getListWithPaging" resultType="kr.co.T2Market.board.domain.ReplyVO">

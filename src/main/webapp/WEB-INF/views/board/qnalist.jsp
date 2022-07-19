@@ -7,11 +7,7 @@
 <head>
         <title>T2Market_admin_QnA</title>
         <!-- Bootstrap -->
-        <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <link href="/resources/assets/styles.css" rel="stylesheet" media="screen">
         <link href="/resources/assets/DT_bootstrap.css" rel="stylesheet" media="screen">
-        <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <%@ include file="../includes/admin_header.jsp" %>
 </head>
     
@@ -66,6 +62,9 @@
                                  <td class="move">
                                  	<a class="move" href="/board/qnaget?qna_no=<c:out value='${qna_user.qna_no }' />">
                                  		<c:out value="${qna_user.title }" />
+                                 		<c:if test="${qna_user.reply_count ne 0}">
+                                 			(<c:out value="${qna_user.reply_count}"></c:out>)
+                                 		</c:if>
                                  	</a>
                                  </td>
                                  <td class=" "><c:out value="${qna_user.member_id }" /></td>
@@ -74,6 +73,7 @@
                              </c:forEach>
                            </tbody>
                          </table>
+                         
                        <!-- 기존 페이징 디자인 뺀곳  -->
                        <div class="row"><div class="span6"><div class="dataTables_info" id="example_info"></div></div>
 						<div class="span6"><div class="dataTables_paginate paging_bootstrap pagination">
@@ -107,14 +107,15 @@
     </div>
 </div>
         <!--/.fluid-container-->
+<!-- 
+        <script src="/resources/vendors/jquery-1.9.1.js"></script>
+        <script src="/resources/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/resources/vendors/datatables/js/jquery.dataTables.min.js"></script>
 
-        <script src="vendors/jquery-1.9.1.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="vendors/datatables/js/jquery.dataTables.min.js"></script>
 
-
-        <script src="assets/scripts.js"></script>
-        <script src="assets/DT_bootstrap.js"></script>
+        <script src="/resources/assets/scripts.js"></script>
+        <script src="/resources/assets/DT_bootstrap.js"></script>
+         -->
         <script>
         $(function() {
             

@@ -11,7 +11,7 @@
 	</select> -->
 	
 	<select id="countReciept" resultType="int">
-		select count(*) from qna_user
+		select count(qna_no) from qna_user
 	</select>
 	
 	<select id="selectQnA" resultType="kr.co.T2Market.board.domain.QnAVO">
@@ -19,7 +19,7 @@
 		FROM (
 			SELECT ROWNUM RN, A.* 
 				FROM (
-						SELECT *  
+						SELECT qna_no, member_id, title, content content1, regdate, updatedate, reply_count
 						from qna_user
 						order by qna_no desc
 						) A
@@ -28,7 +28,15 @@
 	</select>
 	
 	<select id="read" resultType="kr.co.T2Market.board.domain.QnAVO">
-		select * from qna_user where qna_no = #{qna_no}
+		select qna_no, member_id, title, content content1, regdate, updatedate, reply_count from qna_user where qna_no = #{qna_no}
 	</select>
 
+
+
+	<update id="updateReplyCount">
+		update qna_user qu
+		set qu.reply_count=(select count(qna_no) from qna_admin
+		    				where qna_no=#{qna_no})
+		where qu.qna_no=#{qna_no}
+	</update>
 </mapper>

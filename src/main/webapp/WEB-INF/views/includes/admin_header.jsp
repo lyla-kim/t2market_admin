@@ -17,7 +17,7 @@ body { margin: 0; }
   position: relative;
 }
 .zeta-menu li:hover { background: gainsboro; }
-.zeta-menu li.expand { background: lightgreen; }
+.zeta-menu li.expand { background: #CDA27D; }
 .zeta-menu li.expand>a { color: indigo; }
 .zeta-menu a {
   color: black;
@@ -85,10 +85,10 @@ body { margin: 0; }
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">상품관리</a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">주문관리 </a>
+                                <a href="/order/list" role="button" class="dropdown-toggle" data-toggle="dropdown">주문관리 </a>
                             </li>
                             <li class="dropdown">
-                                <a href="board/noticelist" role="button" class="dropdown-toggle" data-toggle="dropdown">게시판관리 </a>
+                                <a href="/board/noticelist" role="button" class="dropdown-toggle" data-toggle="dropdown">게시판관리 </a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">매출관리 </a>

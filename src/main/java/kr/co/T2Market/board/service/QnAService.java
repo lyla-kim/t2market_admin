@@ -10,9 +10,11 @@ public interface QnAService {
 
 	public List<QnAVO> getList();
 	
-	public QnAVO get(Long qna_no);
+	public QnAVO get(String qna_no);
 	
 	public int countReciept();
 	
 	public List<QnAVO> selectQnA(PagingVO vo);
+	
+	public void updateReplyCount(String qnaNo);
 }

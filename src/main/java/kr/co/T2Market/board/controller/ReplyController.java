@@ -49,29 +49,29 @@ public class ReplyController {
 //		return new ResponseEntity<>(service.getList(page, qna_no), HttpStatus.OK); //?
 //	}
 	
-	@GetMapping(value="/{answer_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
-	public ResponseEntity<ReplyVO> get(@PathVariable("answer_no") Long answer_no){
-		log.info("get:"+answer_no);
-		
-		return new ResponseEntity<>(service.get(answer_no), HttpStatus.OK);
-	}
+//	@GetMapping(value="/{answer_no}", produces = {MediaType.APPLICATION_XML_VALUE, MediaType.APPLICATION_JSON_UTF8_VALUE})
+//	public ResponseEntity<ReplyVO> get(@PathVariable("answer_no") String answer_no){
+//		log.info("get:"+answer_no);
+//		
+//		return new ResponseEntity<>(service.get(answer_no), HttpStatus.OK);
+//	}
 	
-	@PreAuthorize("principal.username == #vo.replyer") //?
-	@DeleteMapping(value="/{answer_no}", produces= {MediaType.TEXT_PLAIN_VALUE})
-	public ResponseEntity<String> remove(@PathVariable("answer_no") Long answer_no){
-		log.info("remove:"+answer_no);
-		
-		return service.remove(answer_no) ==1
-				? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-	}
-	
+//	@PreAuthorize("principal.username == #vo.replyer") //?
+//	@DeleteMapping(value="/{answer_no}", produces= {MediaType.TEXT_PLAIN_VALUE})
+//	public ResponseEntity<String> remove(@PathVariable("answer_no") String answer_no){
+//		log.info("remove:"+answer_no);
+//		
+//		return service.remove(answer_no) ==1
+//				? new ResponseEntity<>("success", HttpStatus.OK) : new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+//	}
+//	
 	@PreAuthorize("principal.username == #vo.replyer")  //?
 	@RequestMapping(method = { RequestMethod.PUT,
 			RequestMethod.PATCH }, value = "/{answer_no}", consumes = "application/json", produces = {
 					MediaType.TEXT_PLAIN_VALUE })
 	public ResponseEntity<String> modify(
 			 @RequestBody ReplyVO vo, 
-			 @PathVariable("answer_no") Long answer_no) {
+			 @PathVariable("answer_no") String answer_no) {
 
 		vo.setAnswer_no(answer_no);
 

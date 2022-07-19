@@ -10,9 +10,11 @@ public interface QnAMapper {
 
 	public List<QnAVO> getList();
 	
-	public QnAVO read(Long qnaNo);
+	public QnAVO read(String qnaNo);
 
 	public int countReciept();
 	
 	public List<QnAVO> selectQnA(PagingVO vo);
+	
+	public void updateReplyCount(String qnaNo);
 }

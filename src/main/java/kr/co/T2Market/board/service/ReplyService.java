@@ -9,13 +9,15 @@ public interface ReplyService {
 
 	public int register(ReplyVO vo);
 	
-	public ReplyVO get(Long answer_no);
+	public List<ReplyVO> get(String answer_no);
 	
 	public int modify(ReplyVO vo);
 	
-	public int remove(Long answer_no);
+	public int remove(ReplyVO vo);
 	
 	public int countReply();
 	
-	public List<ReplyVO> getList(PagingVO pag, Long qna_no);
+	public List<ReplyVO> getList(PagingVO pag, String qna_no);
+	
+	public ReplyVO selectReply(String answer_no);
 }

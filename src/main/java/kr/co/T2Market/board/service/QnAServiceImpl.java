@@ -2,20 +2,19 @@ package kr.co.T2Market.board.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.T2Market.board.domain.NoticeVO;
 import kr.co.T2Market.board.domain.QnAVO;
 import kr.co.T2Market.board.mapper.QnAMapper;
 import kr.co.T2Market.reciept.domain.PagingVO;
-import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Service
 @Log4j
-@AllArgsConstructor
 public class QnAServiceImpl implements QnAService {
-	
+	@Setter(onMethod_ = @Autowired)
 	private QnAMapper mapper;
 
 	@Override
@@ -28,7 +27,7 @@ public class QnAServiceImpl implements QnAService {
 	}
 
 	@Override
-	public QnAVO get(Long qna_no) {
+	public QnAVO get(String qna_no) {
 		return mapper.read(qna_no);
 	}
 
@@ -44,4 +43,8 @@ public class QnAServiceImpl implements QnAService {
 		return mapper.selectQnA(vo);
 	}
 
+	@Override
+	public void updateReplyCount(String qnaNo) {
+		mapper.updateReplyCount(qnaNo);
+	}
 }

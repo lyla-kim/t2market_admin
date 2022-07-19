@@ -23,7 +23,7 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public ReplyVO get(Long answer_no) {
+	public List<ReplyVO> get(String answer_no) {
 		return mapper.read(answer_no);
 	}
 
@@ -33,8 +33,8 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public int remove(Long answer_no) {
-		return mapper.delete(answer_no);
+	public int remove(ReplyVO vo) {
+		return mapper.delete(vo);
 	}
 
 	@Override
@@ -43,8 +43,12 @@ public class ReplyServiceImpl implements ReplyService {
 	}
 
 	@Override
-	public List<ReplyVO> getList(PagingVO pag, Long qna_no) {
+	public List<ReplyVO> getList(PagingVO pag, String qna_no) {
 		return mapper.getListWithPaging(pag, qna_no);
 	}
 
+	@Override
+	public ReplyVO selectReply(String answer_no) {
+		return mapper.selectReply(answer_no);
+	}
 }

@@ -11,16 +11,18 @@ public interface ReplyMapper {
 	
 	public int insert(ReplyVO vo);
 	
-	public ReplyVO read(Long qna_no);
+	public List<ReplyVO> read(String qna_no);
 	
-	public int delete (Long answer_no);
+	public int delete(ReplyVO vo);
 	
 	public int update(ReplyVO reply);
+	
+	public ReplyVO selectReply(String answer_no);
 	
 	public int countReply();
 	
 	public List<ReplyVO> getListWithPaging(
 			@Param("pag") PagingVO pag,
-			@Param("qna_no") Long qna_no);
+			@Param("qna_no") String qna_no);
 
 }

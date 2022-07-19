@@ -6,13 +6,16 @@ import lombok.Data;
 import lombok.ToString;
 
 @Data
-@ToString
 public class QnAVO {
 
-	private Long qna_no;
+	private String qna_no;
 	private String member_id;
 	private String title;
-	private String content;
+	private String content1;
 	private Date regdate;
 	private Date updatedate;
+	
+	private int reply_count;
+	
+	
 }
