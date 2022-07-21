@@ -13,6 +13,7 @@ public class AdminVO {
 	private Date regdate;
 	private Date updatedate;
 	private char active;
+	private String code_no;
 	
 	private List<AuthVO> authList;
 	

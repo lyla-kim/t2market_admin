@@ -1,5 +1,6 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
 <html>
 <head>
 <style>
@@ -16,7 +17,7 @@ body { margin: 0; }
   position: relative;
 }
 .zeta-menu li:hover { background: gainsboro; }
-.zeta-menu li.expand { background: #CDA27D; }
+.zeta-menu li.expand { background: lightgreen; }
 .zeta-menu li.expand>a { color: indigo; }
 .zeta-menu a {
   color: black;
@@ -41,15 +42,12 @@ body { margin: 0; }
 .zeta-menu ul ul { left: 100%; top: 0; }
 </style>
 
+
+        <title>admin main page</title>
         <!-- Bootstrap -->
         <link  href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link  href="/resources/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link  href="/resources/assets/styles.css" rel="stylesheet" media="screen">
-        <!--[if lte IE 8]><script language="javascript" type="text/javascript" src="vendors/flot/excanvas.min.js"></script><![endif]-->
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
         <script src="/resources/vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
 
@@ -62,20 +60,15 @@ body { margin: 0; }
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/">Admin Panel</a>
+                    <a class="brand" href="/">T2Market</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
-                        	
-                        	<c:if test="${admin != null }">
-	                        <ul class="zeta-menu">
-	                        	<li><a>&nbsp&nbsp&nbsp ${admin.admin_id } &nbsp&nbsp&nbsp</a>
-	                        		<ul>
-	                        			<li><a href="/admin/unusedAdmin?admin_id=${admin.admin_id }" id="withdraw">회원탈퇴</a>
-	                        			<li><a href="/login/logout2">로그아웃</a>
-	                        		</ul>
-	                        	</li>
+                        
+	                        <ul class="nav">
+	                        	<li class="dropdown"><a href="#1" class="dropdown-toggle">로그인</a></li>
+	                        	<li class="dropdown"><a href="/admin/registerAdmin" class="dropdown-toggle">회원가입</a></li>
 	                        </ul>
-                            </c:if>
+                            
                         </ul>
                         <ul class="nav">
                             
@@ -83,10 +76,10 @@ body { margin: 0; }
                                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">상품관리</a>
                             </li>
                             <li class="dropdown">
-                                <a href="/order/list" role="button" class="dropdown-toggle" data-toggle="dropdown">주문관리 </a>
+                                <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">주문관리 </a>
                             </li>
                             <li class="dropdown">
-                                <a href="/board/noticelist" role="button" class="dropdown-toggle" data-toggle="dropdown">게시판관리 </a>
+                                <a href="board/noticelist" role="button" class="dropdown-toggle" data-toggle="dropdown">게시판관리 </a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">매출관리 </a>

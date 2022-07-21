@@ -1,5 +1,7 @@
 package kr.co.T2Market.admin.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,11 +23,6 @@ public class Admin_InfoController {
 
 	private Admin_InfoService service;
 	
-	@GetMapping("/main")
-	public void mainAdmin() {
-		
-	}
-	
 	@GetMapping("/registerAdmin")
 	public void registerAdmin() {
 		
@@ -38,7 +35,7 @@ public class Admin_InfoController {
 		service.registerAdmin(admin);
 		rttr.addFlashAttribute("result", "success");
 		
-		return "redirect:/";
+		return "redirect:/login/login2";
 	}
 	
 	@ResponseBody
@@ -49,12 +46,15 @@ public class Admin_InfoController {
 	}
 	
 	@GetMapping("/unusedAdmin")
-	public String unusedAdmin(@RequestParam("admin_id") String admin_id, RedirectAttributes rttr) {
+	public String unusedAdmin(@RequestParam("admin_id") String admin_id, RedirectAttributes rttr, HttpSession session) {
 		log.info("unusedAdmin: "+admin_id);
 		
 		service.unusedAdmin(admin_id);
+		
+		session.invalidate();
+		
 		rttr.addFlashAttribute("result", "success");
 		
-		return "redirect:/admin/main";
+		return "redirect:/login/login2";
 	}
 }

@@ -5,8 +5,8 @@
 <mapper namespace="kr.co.T2Market.admin.mapper.Admin_InfoMapper">
 
 	<insert id="insertAdmin">
-		insert into admin_info(admin_id, code_no, pass, name, active)
-		values(#{admin_id}, #{code_no}, #{pass}, #{name}, #{active})
+		insert into admin_info(admin_id, code1, code2, pass, name, active)
+		values(#{admin_id}, #{code1}, #{code2}, #{pass}, #{name}, #{active})
 	</insert>
 	
 	<select id="getId" resultType="int">

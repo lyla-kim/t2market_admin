@@ -25,15 +25,12 @@
                   <fieldset>
                     <legend>회원가입</legend>
                     <div class="control-group">
-                      <label class="control-label" for="disabledInput">권한</label>
-                      <input type="hidden" name="code1" value="20000">
+                     <!--  <label class="control-label" for="disabledInput">권한</label> -->
                       <div class="controls">
-                        <select name="code2">
-                        	<option value="20100" selected="selected">최상위관리자</option>
-                        	<option value="20200" >상품관리자</option>
-                        	<option value="20300" >주문관리자</option>
-                        	<option value="20400" >매출관리자</option>
-                        	<option value="20500" >코드관리자</option>
+                        <select name="code_no">
+                        	<option value="11" selected="selected">최상위관리자</option>
+                        	<option value="12" >상품관리자</option>
+                        	<option value="13" >주문관리자</option>
                         </select>
                       </div>
                     </div>
@@ -72,7 +69,7 @@
                     
                     <div class="form-actions">
                       <button type="submit" class="btn btn-primary" name="signup">회원가입</button>
-                      <button type="button" class="btn" id="cancel">취소</button>
+                      <button type="button" class="btn" id="cancel">이전</button>
                     </div>
                   </fieldset>
                 </form>
@@ -148,7 +145,7 @@ $(document).ready(function(){
 		
 	});
 	
-	//취소시 이전페이지 이동
+	//이전 클릭시 이전페이지 이동
 	$("#cancel").on("click", function(){
 		history.go(-1);
 	});

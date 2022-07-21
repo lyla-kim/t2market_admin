@@ -8,8 +8,7 @@ import lombok.Data;
 public class Admin_InfoVO {
 
 	private String admin_id;
-	private String code1;
-	private String code2;
+	private String code_no;
 	private String pass;
 	private String name;
 	private String active;
