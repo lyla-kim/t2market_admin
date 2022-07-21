@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="kr.co.T2Market.product.mapper.ProductAttachMapper">
+
+	<select id="findByCode" resultType="kr.co.T2Market.product.domain.ProductAttachVO">
+		<![CDATA[
+		SELECT * FROM product_image Where product_no = #{product_no}
+		]]>
+	</select>
+	
+	<select id="getOldFiles" resultType="kr.co.T2Market.product.domain.ProductAttachVO">
+		<![CDATA[
+		SELECT * FROM PRODUCT_IMAGE WHERE product_no = #{product_no}
+		]]>
+	</select>
+	
+	<insert id="insert">
+	<![CDATA[
+		INSERT INTO product_image (uuid, uploadPath, fileName, product_no, regdate, updatedate) 
+		VALUES (#{uuid}, #{uploadPath}, #{fileName}, #{product_no}, sysdate, sysdate)
+	]]>
+	</insert>
+
+	<delete id="delete">
+	<![CDATA[
+		DELETE FROM product_image WHERE uuid=#{uuid}
+	]]>
+	</delete>
+
+	<delete id="deleteAll">
+	<![CDATA[
+		DELETE FROM product_image WHERE product_no=#{product_no}
+	]]>
+	</delete>
+	
+	
+	
+	
+	
+	
+	
+</mapper>

@@ -6,6 +6,7 @@ import lombok.Data;
 
 @Data
 public class CodeVO {
+	private String code_no;
 	private String code1;
 	private String code1_name;
 	private String code2;
@@ -15,5 +16,5 @@ public class CodeVO {
 	private String bigo;
 	private Date regdate;
 	private Date updatedate;
-	private char active;
+	private String active;
 }

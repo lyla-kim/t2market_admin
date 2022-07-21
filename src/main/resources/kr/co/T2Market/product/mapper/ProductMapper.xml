@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.T2Market.product.mapper.ProductMapper">
+
+<select id="selectProduct" resultType="kr.co.T2Market.product.domain.ProductVO">
+
+<![CDATA[
+SELECT * 
+		FROM (
+			SELECT ROWNUM RN, A.* 
+				FROM (
+						SELECT pd.code_no, cd.code2, cd.code2_name, pd.product_no, pd.explain, pd.product_name, pd.discount, pd.sell_price, pd.real_price, pd.total_output, pd.total_sales, pd.input, pd.stock, pd.regdate, pd.updatedate, pd.active 
+						from code_info cd, product pd
+						where cd.code_no = pd.code_no ]]>
+						<include refid="PagingVO"></include>
+						<![CDATA[
+						order by pd.product_no desc
+						) A
+				)
+		WHERE RN BETWEEN #{start} AND #{end} ]]>
+  	  
+</select>
+
+<select id="countProduct" resultType="int">
+<![CDATA[
+	SELECT count(*) from product pd,code_info cd where pd.code_no = cd.code_no and pd.active='Y' ]]> 
+	<include refid="PagingVO"></include>
+	
+</select>
+
+<select id="readProduct" resultType="kr.co.T2Market.product.domain.ProductVO">
+	SELECT pd.code_no, cd.code2, cd.code2_name, pd.product_no, pd.explain, pd.product_name, pd.discount, pd.sell_price, pd.real_price, pd.total_output, pd.total_sales, pd.input, pd.stock, pd.regdate, pd.updatedate, pd.active 
+						from code_info cd, product pd
+						where cd.code_no = pd.code_no and pd.product_no = #{product_no}
+</select>
+
+<insert id="insertProduct">
+	<selectKey keyProperty="product_no" order="BEFORE" resultType="String">
+			select seq_product.nextval from dual
+	</selectKey>
+	insert into 
+	product (product_no, code_no, explain, product_name, discount, sell_price, real_price, total_output, total_sales, input, stock, regdate, updatedate, active) 
+    values (#{product_no}, #{code_no}, #{explain}, #{product_name}, #{discount}, #{sell_price}, #{sell_price}*((100-#{discount})/100), 0, 0, #{stock}, #{stock}, sysdate, sysdate, #{active})
+</insert>
+ <!-- code2, code3를 선택 받아서 code_no를 product 테이블에 넣는다  -->
+ 
+ <update id="updateProduct">
+ 	update product set 
+ 		code_no = #{code_no},
+ 		explain = #{explain},
+ 		product_name = #{product_name},
+ 		discount = #{discount},
+ 		sell_price = #{sell_price},
+ 		real_price = #{sell_price}*((100-#{discount})/100),
+ 		input = #{input},
+ 		stock = #{stock} + #{input},
+ 		updatedate = sysdate,
+ 		active = #{active} 
+ 		where product_no = #{product_no}
+ </update>
+ 
+ <select id="codeSelect" resultType="kr.co.T2Market.product.domain.ProductVO">
+ 	select code_no, code1, code2, code1_name, code2_name from code_info where active='Y' and code1='10000' order by code2 desc
+ </select>
+
+
+<sql id="PagingVO">
+		<if test="searchType != null">
+			<if test="searchType == 'r'.toString()">and cd.code2_name like '%'||#{keyword}||'%'</if>
+			<if test="searchType == 'm'.toString()">and pd.product_name like '%'||#{keyword}||'%'</if>
+		</if>
+	</sql>
+
+</mapper>
