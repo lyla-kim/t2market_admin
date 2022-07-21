@@ -18,4 +18,8 @@
 		set active='N', updatedate=sysdate
 		where admin_id=#{admin_id}
 	</update>
+	
+	<select id="codeSelect" resultType="kr.co.T2Market.admin.domain.Admin_InfoVO">
+ 	select code_no, code1, code2, code1_name, code2_name from code_info where active='Y' and code1='20000' order by code2 desc
+ </select>
 </mapper>

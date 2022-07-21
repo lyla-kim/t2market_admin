@@ -15,4 +15,10 @@ public class Admin_InfoVO {
 
 	private Date regdate;
 	private Date updatedate;
+	
+	private String code1;
+	private String code2;
+	private String code1_name;
+	private String code2_name;
+	
 }

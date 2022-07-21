@@ -18,4 +18,6 @@ public interface NoticeMapper {
 	public int countReciept();
 	
 	public List<NoticeVO> selectNotice(PagingVO vo);
+	
+	
 }
