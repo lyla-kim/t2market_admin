@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,10 +29,11 @@
                      <!--  <label class="control-label" for="disabledInput">권한</label> -->
                       <div class="controls">
                         <select name="code_no">
-                        	<option value="11" selected="selected">최상위관리자</option>
-                        	<option value="12" >상품관리자</option>
-                        	<option value="13" >주문관리자</option>
+                        	<c:forEach var="code" items="${code }">
+                      				<option value="${code.code_no }"><c:out value="${code.code2_name }"/></option>
+                      		</c:forEach>
                         </select>
+                        
                       </div>
                     </div>
                     <div class="control-group">

@@ -1,5 +1,7 @@
 package kr.co.T2Market.admin.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,5 +34,11 @@ public class Admin_InfoServiceImpl implements Admin_InfoService {
 	public void unusedAdmin(String admin_id) {
 		log.info("unused........"+admin_id);
 		adminMapper.unusedAdmin(admin_id);
+	}
+	
+	@Override
+	public List<Admin_InfoVO> codeSelect(){
+		log.info("codeSelect....");
+		return adminMapper.codeSelect();
 	}
 }
