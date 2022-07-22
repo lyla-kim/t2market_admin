@@ -14,10 +14,7 @@
 			<div class="span3" id="sidebar">
 				<ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
 					<li>
-						<a href="noticelist"><i class="icon-chevron-right"></i> 매출조회</a>
-					</li>
-					<li>
-						<a href="qnalist"><i class="icon-chevron-right"></i> 매출현황</a>
+						<a href="sales"><i class="icon-chevron-right"></i> 매출조회</a>
 					</li>
 				</ul>
 			</div>

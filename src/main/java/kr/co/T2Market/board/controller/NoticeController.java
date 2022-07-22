@@ -51,8 +51,6 @@ public class NoticeController {
 	
 	@PostMapping("/noticeregister")
 	public String register(NoticeVO notice, RedirectAttributes rttr ) {
-		//TODO : 나중에 삭제 -> 로그인 작업 완료되면
-		notice.setAdmin_id("admin1");
 		
 		service.regiser(notice);
 		
