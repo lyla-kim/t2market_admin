@@ -7,7 +7,7 @@
 
 	<select id="login" resultType="kr.co.T2Market.login.domain.AdminVO">
 		select * from admin_info
-		where admin_id = #{admin_id} and pass = #{pass}
+		where admin_id = #{admin_id}
 	</select>
 
 </mapper>
