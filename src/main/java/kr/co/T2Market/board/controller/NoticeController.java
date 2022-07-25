@@ -1,5 +1,7 @@
 package kr.co.T2Market.board.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.T2Market.board.domain.NoticeVO;
 import kr.co.T2Market.board.domain.PagingVO;
 import kr.co.T2Market.board.service.NoticeService;
+import kr.co.T2Market.login.domain.AdminVO;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
 
@@ -50,7 +53,15 @@ public class NoticeController {
 	}
 	
 	@PostMapping("/noticeregister")
-	public String register(NoticeVO notice, RedirectAttributes rttr ) {
+	public String register(NoticeVO notice, RedirectAttributes rttr, HttpSession session ) {
+		
+//		log.debug("session :: " + session);
+		
+		AdminVO adminVo = (AdminVO) session.getAttribute("admin");
+		
+//		log.debug("adminVo :: " + adminVo);
+		
+		notice.setAdmin_id(adminVo.getAdmin_id());
 		
 		service.regiser(notice);
 		

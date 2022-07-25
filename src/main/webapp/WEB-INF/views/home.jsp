@@ -62,7 +62,7 @@ body { margin: 0; }
                      <span class="icon-bar"></span>
                      <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="/">Admin Panel</a>
+                    <a class="brand" href="/">T2 Market</a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right">
                         	
